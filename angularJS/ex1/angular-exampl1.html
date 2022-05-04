@@ -21,6 +21,11 @@
             {{ 'nation: ' + capital.nation + ' city : ' + capital.city}}
         </li>
     </ul>
+    <h3>과일리스트</h3>
+    <div ng-include="'template/grocerylist.tpl.html'"></div>
+    <label for="chkListType">Number List</label>
+    <input type="checkbox" ng-model="showList" id="chkListType">
+    <ng-include src="getList()"/>
 </div>
 
 

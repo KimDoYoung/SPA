@@ -17,4 +17,14 @@ app.controller("ctrl1", function($scope){
         {city : 'tokyo', nation : 'japan'},
         {city : 'beijing', nation : 'china'},
     ];
+    $scope.groceries = [
+        {item : '딸기', purchased : false},
+        {item : '바나나', purchased : false},
+        {item : '포도', purchased : false},
+        {item : '수박', purchased : false},
+    ]
+    $scope.showList = false;
+    $scope.getList = function(){
+        return $scope.showList ? "template/grocerylist.tpl.html" : "template/grocerylist2.tpl.html";
+    }
 });
