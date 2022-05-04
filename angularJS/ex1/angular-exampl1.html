@@ -25,7 +25,19 @@
     <div ng-include="'template/grocerylist.tpl.html'"></div>
     <label for="chkListType">Number List</label>
     <input type="checkbox" ng-model="showList" id="chkListType">
+    <div>
     <ng-include src="getList()"/>
+    </div>
+
+    <label for="number4">number (1-4)</label>
+    <input type="text" id="number4" ng-model="number4"  />
+    <div ng-switch="number4">
+        <p ng-switch-when="1">you entered 1</p>
+        <p ng-switch-when="2">you entered 2</p>
+        <p ng-switch-when="3">you entered 3</p>
+        <p ng-switch-when="4">you entered 4</p>
+        <p ng-switch-default>Not following directions</p>
+    </div>
 </div>
 
 

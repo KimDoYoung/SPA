@@ -27,4 +27,5 @@ app.controller("ctrl1", function($scope){
     $scope.getList = function(){
         return $scope.showList ? "template/grocerylist.tpl.html" : "template/grocerylist2.tpl.html";
     }
+    $scope.number4 = 0;
 });
