@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exampl3</title>
+    <style>
+        .bluetext {
+            color: blue;
+        }
+        .boldtext {
+            font-weight: bold;
+        }
+        .stripeven {
+            color : #007FFF;
+            background-color: aquamarine;
+        }
+        .stripodd {
+            color :brown;
+            background-color: azure;
+        }
+    </style>
+</head>
+<body ng-app="app">
+<div ng-controller="ctrl1">
+    <button ng-disabled="disbleButton">click</button>
+    <label for="chkButton">make button enable or disable</label>
+    <input type="checkbox" ng-model="disbleButton" name="" id="chkButton">
+    <p ng-hide="disbleButton">체크박스->Model에 따라서 보였다 안보였다.</p>
+    <p>
+        <select name="" id="" ng-model="textStyle">
+            <option value="bluetext">blue text</option>
+            <option value="boldtext">bold text</option>
+        </select>
+        <p ng-class="textStyle">Some  Random Text</p>
+    </p>
+    <p>
+        <table>
+            <tr ng-repeat="item in list" ng-class-even="'stripeven'" ng-class-odd="'stripodd'">
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+            </tr>
+        </table>
+    </p>
+</div>
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>    
+<script src="js/example3.js"></script>
+</body>
+</html>
