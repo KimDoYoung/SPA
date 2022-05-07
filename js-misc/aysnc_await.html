@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>async & await</h1>
+<script>
+console.log('start');
+    function timer(time){
+        return new Promise(  (resolve, reject) =>{
+            setTimeout(()=>{ resolve(time);},  time);
+        } );
+    }
+    timer(1000).then(
+        data=>{
+            console.log(data);
+            return timer(data + 1000);
+        }
+     ).then(
+            data=>{
+                console.log(data);
+                console.log('end');
+            }
+    );
+    //------> await는 async 함수에서만 사용될 수 있다.
+    // async를 붙이면 Promise를 리턴한다.
+    async function run (){
+        console.log('start');
+        var time = await timer(1000);
+        console.log('time:', time);
+        time = await timer(2000);
+        console.log('time:' + time);
+        time = await timer(1000);
+        console.log('time:', time);
+        console.log('end');
+    }
+    run(); // Promise를 리턴한다. 
+    // 즉 await를 가질 수 있다.
+    
+</script>
+</body>
+</html>
