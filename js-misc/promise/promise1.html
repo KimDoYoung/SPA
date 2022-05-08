@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function job1(){
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    resolve('job1 ok');
+                }, 2000);
+            });
+        }
+        function job2(){
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    resolve('job2 ok');
+                }, 2000);
+            });
+        }
+        // job1()
+        // .then(function(data){
+        //     console.log('data:', data);
+        //     job2().then(function(data){
+        //         console.log('data2:', data);
+        //     });
+        // })
+        job1()
+            .then(function(data){
+                console.log('data1:', data);
+                return job2();
+            })
+            .catch(function(reason){
+                console.log('reason:', reason);
+                //후속을 나오지 않게
+                return Promise.reject();
+            })
+            .then(function(data){
+                console.log('data2:', data);
+            });
+    </script>
+</body>
+</html>

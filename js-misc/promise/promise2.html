@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // time : milisec
+        // result : true -> resolve, false -> reject
+        // message : send data
+        function timer(time, result, message){
+            var time = time || 1000;
+            var message = message || "OK";
+            var result = result == undefined ? true : result;
+            return new Promise( function(resolve, reject){
+                setTimeout(function(){
+                    if(result){
+                        resolve(message + ":" + time );
+                    }else{
+                        reject(new Error(message));
+                    }
+                }, time);
+            });
+        };
+        
+        timer().then(data=>console.log(data));
+
+        timer(2000, false, "실패함...")
+        .then(function(data){
+            console.log(data);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+
+        //
+        //Promise.all
+        //
+        console.time('Promise.all');
+        Promise.all([timer(1000), timer(2000), timer(3000)])
+            .then(function(result){
+                console.log('result', result);
+                console.timeEnd('Promise.all');
+            });
+        //
+        //Promise.race
+        //
+        console.time('Promise.race');
+        Promise.race([timer(1000), timer(2000), timer(3000)])
+            .then(function(result){
+                console.log('result', result);
+                console.timeEnd('Promise.race');
+            });
+
+    </script>
+</body>
+</html>

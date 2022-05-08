@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call-apply-bind</title>
+</head>
+<body>
+    <h1>call</h1>
+    <ul>
+        <li>call은 모든함수에 적용가능</li>
+        <li>인자가 this가 된다.</li>
+    </ul>
+    <script>
+        const user = {
+            name : 'Mike',
+            showName : function(){
+                console.log(`hello ${this.name}`);
+            }
+        }
+        user.showName();
+        let fn = user.showName;
+        
+        fn.call(user);
+        fn.apply(user);
+        let countFn = fn.bind(user);
+        countFn();
+    </script>
+</body>
+</html>
