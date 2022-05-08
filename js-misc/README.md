@@ -39,6 +39,28 @@ const minValue = Math.min.apply(null, nums);
 const minValue = Math.min.call(null, ...nums);
 ```
 
+## async & await
+
+-  timer(100) 과 같이 promise를 리턴하는 함수를 그냥 쓰고 싶다.
+```javascript
+    timer(100);
+    console.log('111');
+    timer(200);
+    console.log('222);
+```
+그래서  await 와. async를...
+```javascript
+await timer(1000);
+await timer(2000);
+-->
+// await는 함수 안에서 사용되어야하는데, 그 함수 앞에는 async가 붙어야한다.
+async function run(){
+    await timer(1000);
+    await timer(2000);
+}
+run();
+```
+![async & await](./images/async1.png)
 ## 사이트
 
 - jsonplaceholder json데이터 제공
