@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closuree</title>
+</head>
+<body>
+    <h1>closure</h1>
+    <ul>
+        <li>함수와 렉시컬 환경의 조합</li>
+        <li>함수가 생성될 당시의 외부변수를 기억</li>
+        <li>생성이후에도 계속 접근가능</li>
+
+    </ul>
+
+    <script>
+        function makeAdder(x){
+            return function(y) {
+                return x + y;
+            }
+        }
+        const add3 = makeAdder(3);
+        console.log(add3(2));
+
+        const add10 = makeAdder(10);
+        console.log(add10(5));
+        console.log(add3(5));
+
+        function makeCounter(){
+            let num = 0;
+            return function(){
+                return num++;
+            }
+        }
+        let counter = makeCounter();
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+
+    </script>
+</body>
+</html>

@@ -28,3 +28,6 @@ angularJS를 이용해서 SPA를 만들기 위해서 angularJS 관련 코드를 
 13. 범위선택 후 alt + shft + i : 멀티커서가 맨뒤에
 
 
+## directive
+
+- directive는 angularJS의 꽃
