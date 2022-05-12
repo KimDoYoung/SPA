@@ -31,3 +31,8 @@ angularJS를 이용해서 SPA를 만들기 위해서 angularJS 관련 코드를 
 ## directive
 
 - directive는 angularJS의 꽃
+
+
+## 유튜브
+
+https://www.youtube.com/watch?v=FlUCU13dJyo&list=PL4cUxeGkcC9gsJS5QgFT2IvWIX78dV3_v

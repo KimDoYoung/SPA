@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>directive1</title>
+</head>
+<body>
+<ul>
+    <li>transclude : ng-transclude에 html태그를 넣는다. </li>
+    <li>scope : template =  tag, js에서는 카멜, html에서는 대쉬(어이없어~~)</li>
+</ul>
+<div ng-controller="ctrl1" style="margin : 10px">
+    <h1>transclude</h1>
+    <my-example>ng-transclude에 넣는다. Hello AngularJS</my-example>
+    <!-- 빈줄 -->
+    <hr>
+    <h1>scope</h1>
+    <my-binding company-name="kalpa"></my-binding>
+    <!-- 빈줄 -->
+    <hr>
+    <h1>controller를 쓸 수 있다. directive가 controller를 갖는다. 복잡해진다.</h1>
+    
+
+    
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>    
+<script>
+var app = angular.module("app", []);
+app.controller("ctrl1", function($scope){
+    $scope.person = {name : '홍길동', address : "서울 은평구"};
+    $scope.kalpa = { name :  "칼파테크(주)"};
+});
+app.directive('myExample', function(){
+    return {
+        restrict : 'E',
+        template : '<div>Name: {{person.name}}<br> Address : {{person.address}}<br><span ng-transclude></div>',
+        transclude : true,
+
+    }
+});
+app.directive('myBinding', function(){
+    return {
+        restrict : 'E',
+        scope : {
+            company : '=companyName'
+        },
+        template : '<H3>{{company.name}}</H3>'
+    }   
+});
+    
+</script>
+</body>
+</html>

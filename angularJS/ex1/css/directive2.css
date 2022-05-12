@@ -1,0 +1,17 @@
+.table {
+    border : 1px solid brown;
+    text-align:   center;
+    vertical-align : middle;
+    width : 400px
+}
+.table > .title {
+    background-color: beige;
+    text-align: center;
+    color:blue;
+    padding: .1em .3em;
+    cursor : pointer;
+}
+.table > .body {
+    background-color:#FFE4E1;
+    padding : .1em .3em;
+}

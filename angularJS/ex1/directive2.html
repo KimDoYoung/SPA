@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>directive</title>
+    <link rel="stylesheet" href="./css/directive2.css">
+</head>
+<body>
+    <h1>directive간 통신</h1>
+<ul>
+    <li></li>
+</ul>
+<div ng-controller="ctrl1">
+    <my-title>
+        <my-content class="table" ng-repeat="item in items" item-title="item.title">
+            {{item.content}}
+        </my-content>
+    </my-title>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>    
+<script>
+var app = angular.module("app", []);
+app.controller("ctrl1", function($scope){
+    $scope.items = [
+        {title : 'What is directive', content : '특정한 행위의 기능을 가진 element'},
+        {title : 'What is custom directive', content : 'angular의 꽃'},
+        {title : '다른것들은? ', content : 'react, vue, 요새 새로 나온 s'},
+    ];
+});
+app.directive('myTitle', function(){
+    return {
+        restrict : 'E',
+        replace : true,
+        transclude : true,
+        template : '<div ng-transclude></div>',
+        controller : function (){
+            var items = [];
+            this.addItem = function(item){
+                items.push(item);
+            }
+        }
+    }
+});
+app.directive('myContent', function(){
+    return {
+        restrict : 'E',
+        replace : true,
+        transclude : true,
+        require : '^?myTitle',
+        scope : {
+            title : '=itemTitle'
+        },
+        template : [
+                '<div>',
+                '<div class="title" ng-click="click()">{{title}}</div>',
+                '<div class="body" ng-show="showMe" ng-transclude></div>',
+                '<div>'
+                ].join(""),
+        link : function(scope, element, attrs, controller){
+            scope.showMe = false;
+            controller.addItem(scope);
+            scope.click = function click(){
+                scope.showMe = !scope.showMe;
+            }
+        }           
+    }   
+});
+
+    
+</script>
+</body>
+</html>
