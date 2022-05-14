@@ -2,7 +2,7 @@ var app = angular.module('app',['ngRoute', 'ngAnimate']);
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/home', {    
-            templateUrl : 'views/home.html',
+            templateUrl : 'views/home.html', 
             controller : 'ninjaController'
         })
         .when('/list', {
@@ -11,7 +11,7 @@ app.config(['$routeProvider', function($routeProvider){
         })
         .otherwise({
             redirectTo: '/home'
-        });
+        }); 
 }]);
 app.directive('randomNinja', function(){
     return {
