@@ -3,11 +3,19 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
     $locationProvider.hashPrefix('');
     $routeProvider
     .when('/first-msg', {
-        template : '<strong>this is first message</strong>'
+        template : '<strong>this is first message</strong>',
+        caseInsensitivieMatch : true
     })
     .when('/second-msg', {
         templateUrl : 'msg1.html',
         controller : 'message1'
+    })
+    .when('/third-msg', {
+        //redirectTo : '/second-msg'
+        redirectTo : function(){
+            alert("Sorry!");
+            return '/first-msg';
+        }
     })
     .when('/', {
         template : 'default route'
