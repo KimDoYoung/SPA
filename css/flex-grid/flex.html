@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <style>
+        .container {
+            display : flex;
+            /* flex-direction : column; row row-reverse */
+            /* flex-wrap : wrap; */
+            /* justify-content: space-between; space-around */
+            /* align-items: flex-start; */
+            /* align-content : center; */
+            height : 100vh;
+            background-color: lightgray;
+        }
+        .item {
+            flex-basis : 0;
+            background-color: rgba(255,0,0,0.5);
+            border : 1px solid green
+        }
+        .item:nth-child(1) {
+            flex-grow : 1;
+        }
+        .item:nth-child(odd) {
+            background-color: rgba(255,255,0,0.5);
+            border : 1px solid blue
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <ul>
+                <li>
+                    flex라는 것은 container에 적용하면 자식들이 어떻게 배치가 된다는 뜻이다
+                </li>
+                <li>justify-content 축방향으로</li>
+                <li>align-items 는 축과 반대로 </li>
+            </ul>
+
+        </div>
+        <div class="item">
+            <p>BBBB</p>
+        </div>
+        <div class="item">
+            <p>CCCC</p>
+        </div>
+    </div>
+</body>
+</html>
