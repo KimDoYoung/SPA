@@ -4,7 +4,7 @@ const concat  = require('gulp-concat');
 const terser  = require('gulp-terser');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
-const cssnano = require('cssnano');
+const cssnano = require('cssnano'); //compress css
 const autoprefixer = require('autoprefixer');
 const { src, series, parallel, dest, watch} = require('gulp');
 
