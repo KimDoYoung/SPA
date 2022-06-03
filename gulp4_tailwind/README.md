@@ -88,7 +88,7 @@ const sass = require('gulp-sass')(require('sass'));
 - series, parallel 로 수행시킴.
 ```
 $ gulp -version
-CLI version: 2.3.0
+CLI version: 2.3.0np
 Local version: 4.0.2
 ```
 
@@ -96,3 +96,19 @@ Local version: 4.0.2
 
 - contents가 없다.
 - utility가 없다.
+
+
+## typography : tailwindcss plugin사용하기
+
+1. npm install @tailwindcss/typography
+2. tailwind.config.js
+```javascript
+ plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
+```
+3. html에
+```html
+<article class="prose lg:prose-xl">
+```
