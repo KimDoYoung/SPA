@@ -1,5 +1,5 @@
-css 연습
-========
+tailwindcss gulp4로 build  
+=========================
 ## basic
 - gulp --tasks
 ## flex
