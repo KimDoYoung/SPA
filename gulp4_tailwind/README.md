@@ -1,5 +1,14 @@
 tailwindcss gulp4로 build  
 =========================
+
+## 목적
+- gulp를 이용해서  build
+- browserSync 사용
+- tailwindcss로 css
+- development와 build로 나누어져 있음
+- 실제 개발을 염두에 둔다.
+
+
 ## basic
 - gulp --tasks
 ## flex

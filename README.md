@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-#angularJS
-==========
-
-## routing
-    1. #(hash)로 location을 만든다.
-    2. html을 주입한다.
-## ngRount
-    1. angular.js다음에 include하라.
-    
-=======
 Single Page Application 관련 기술들
 ==================================
+
+## SPA front-end 개발에 대한 나의 생각
+
+front-end에 너무 많은 기술들이 있다. 더우기 버전업도 빠르다.
+무슨툴을 써야할지 고민스럽기도 하다.
+ 
 
 ## angular개념
 
@@ -25,4 +20,8 @@ Single Page Application 관련 기술들
 ## indexedDB
 ![indexdb란](images/indexdb.png)
 ![indexdb 개념](./images/indexdb1.png)
->>>>>>> 69a95d770d1f3486d4ad4fb2d0e618620df59852
+
+
+
+> package-lock.json은 package.json으로는 부족한 정보를 도와주는 파일이다.
+> 따라서 생성된 package-lock.json파일은 소스 저장소에 꼭 커밋을 하자!
