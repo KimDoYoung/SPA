@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script src="./angular.js"></script>
+    <script src="./script3.js"></script>
+    <style>
+        body {color:gray;}
+        h1 { font-size:18pt; font-weight: bold;}
+    </style>
+</head>
+<body ng-app="app" ng-init="num=0">
+    <h1>디렉티브(directive)</h1>
+    <ok></ok>
+    <div ng-controller="controller1">
+        <p>first : <input type="text" ng-model="firstName"> </p>
+        <p>last : <input type="text" ng-model="lastName"> </p>
+        <br>
+        <p>full : {{firstName + " " + lastName}}</p>
+    </div>
+    <div ng-controller="AppCtrl">
+        {{name}}
+        <button ng-click="reverseNameService()">ReverseService</button>
+        <button ng-click="reverseNameFactory()">ReverseFactory</button>
+    </div>
+    <div ng-controller="ngDirectiveCtrl">
+        <table>
+            <tr ng-repeat="item in ArrayList" data-ng-show="$index > 1">
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+            </tr>
+        </table>
+        <div ng-if="name=='Guest'"> guest OK</div>
+        <div ng-switch on="name">
+            <div ng-switch-when="Hong">
+                name is Hong
+            </div>
+            <div ng-switch-when="Lee">
+                name is Lee
+            </div>
+            <div ng-switch-default>
+                no name, Guest! 
+            </div>
+        </div>
+        <div ng-show="bTest">ng-show, ng-hide...</div>
+    </div>
+</body>
+</html>
