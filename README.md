@@ -25,3 +25,26 @@ front-end에 너무 많은 기술들이 있다. 더우기 버전업도 빠르다
 
 > package-lock.json은 package.json으로는 부족한 정보를 도와주는 파일이다.
 > 따라서 생성된 package-lock.json파일은 소스 저장소에 꼭 커밋을 하자!
+
+## front-end의 빌드과정에 있어야하는 것들
+
+1. development와 product를 나누어야한다.
+2. javascript 파일들에 대해서
+    - 1개의 파일로 묶기 (merge)
+    - 알아보기 힘들게 만들기 (uglify)
+        - map파일 만들기    
+    - 압축하기 (compress)
+    
+3. css
+    - 1개의 파일로 묶기
+        - map 파일 만들기
+    - 압축하기
+
+4. image
+    - 압축하기
+
+5. html
+    - 압축하기
+        - comment 제거
+        - 공백 없애기
+6. 개발시에는 자동적으로 변경사항을 반영하여 체크해야한다.

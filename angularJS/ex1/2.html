@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myDemoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .started { background-color: aquamarine;}
+    </style>
+    <script src="./angular.js"></script>
+    <script>
+        function MyDataService(){
+            return {
+                getWorlds : function getWorlds(){
+                    return ["this world", "second world"];
+                }
+            };
+        }
+        function DemoController(worldsService){
+            var vm = this;
+            vm.messages = worldsService.getWorlds().map(function(w){
+                return "Hello," + w + "!";
+            });
+        }
+        function startup($rootScope, $window){
+            $window.alert("Hello, loading worlds...");
+            $rootScope.hasStarted = true;
+        }
+        angular.module("myDemoApp", [])
+                .service("worldsService", [MyDataService])
+                .controller("demoController", ["worldsService", DemoController])
+                .config(function(){
+                    console.log("configure application");
+                })
+                .run(["$rootScope", "$window", startup]);
+    </script>
+</head>
+<body ng-class="{ 'started' : hasStarted}" ng-cloak>
+    <div ng-controller="demoController as vm">
+        <ul>
+            <li ng-repeat="msg in vm.messages">{{msg}}</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

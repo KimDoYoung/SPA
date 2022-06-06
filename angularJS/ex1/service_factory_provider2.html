@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller="myController">
+111: {{hello}}
+</div>
+<script>
+    var app = angular.module('app', []);
+    app.value('a', 123);
+    app.value('mode','dev');
+    //뭔가를 계산하고 싶다?
+    app.factory('b', function(a){
+        return a*2;
+    });
+    function Greeter(a){
+        this.gree = function(){
+            return 'Hello ' + a;
+        }
+    }
+    app.factory('greeter', function(a){
+        return new Greeter(a);
+    });
+    app.provider('greeter2', function(){
+        var salutation = 'Hello';
+        //var mode = mode;
+        this.setSalutation = function(s){
+            salutation = s;
+        }
+        function Greeter(a){
+            this.greet = function(){
+                return salutation + ' ' + a ;
+            }
+        }
+        this.$get = function(a){
+            return new Greeter(a);
+        }
+    });
+    app.config(function(greeter2Provider){
+        greeter2Provider.setSalutation('Halo~~~');
+    });
+
+    //value는 controller에서만 쓸 수 있는가?
+    app.controller('myController', function($scope, greeter2, mode){
+        $scope.hello = greeter2.greet() + ' mode: ' + mode;
+
+    });
+</script>
+</body>
+</html>

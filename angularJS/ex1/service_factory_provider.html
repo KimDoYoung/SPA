@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller="myController">
+    {{serviceOutput}} <br>
+    {{factoryOutput}} <br>
+    {{providerOutput}}
+</div>
+<script>
+    var app = angular.module('app', []);
+    var MyFunc = function(){
+        this.name = 'Hong';
+        this.$get = function(){
+            this.name = 'Kim';
+            return 'Hello from MyFunc.$get() this.name = ' + this.name;
+        };
+        return 'Hello from MyFunc() this.name = ' + this.name;
+    };
+
+    // 함수 자체를 리턴
+    app.service('myService', MyFunc);
+    
+    // 함수의 return value
+    app.factory('myFactory', MyFunc);
+
+    // 함수의 $get의 return value
+    app.provider('myProvider', MyFunc);
+
+    app.controller('myController', function($scope, myService, myFactory, myProvider){
+        $scope.serviceOutput = 'myService : ' + myService;
+        $scope.factoryOutput = 'myFactory : ' + myFactory;
+        $scope.providerOutput = 'myProvider : ' + myProvider;
+    });
+</script>
+</body>
+</html>
