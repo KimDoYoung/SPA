@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vanilla</title>
+</head>
+<body>
+    <a  id="a1">click1</a>
+    <a  id="a2">click2</a>
+    <a  id="a3">click3</a>
+    <div class="box">1</div> 
+    <div class="box">2</div> 
+    <div class="box">3</div> 
+    <button id="btn1">토글</button>
+    <img src="" alt="">
+    <div class="search-container"></div>
+    <button id="btn2">add</button>
+    <script>
+        // events
+        document.addEventListener('DOMContentLoaded',function(){
+            console.log('document ready....');
+        });
+        document.querySelectorAll('a').forEach((el)=>{
+            console.log(el.id);
+            el.addEventListener('click', (e)=>{
+                console.log('anchor click ' + el.id );
+            });
+        });
+        document.getElementById('btn1').addEventListener('click',(e)=>{
+            var divs = document.querySelectorAll('div.box');
+            divs.forEach(div=>{div.style.display='none'});
+        });
+        //select
+        var a1 = document.getElementById('a1');
+        console.log(a1);
+        var boxes = document.querySelectorAll('div.box');
+        console.log(boxes.length);
+        //attributes
+        document.querySelector('img').setAttribute('alg', 'this is vanilla');
+        //동적추가
+        document.getElementById('btn2').addEventListener('click', (e)=>{
+            var newDiv = document.createElement('div');
+            newDiv.innerHTML = '<p>Hello</p>';
+            document.querySelector('.search-container').appendChild(newDiv);
+        });
+        boxes.forEach(el=>{el.classList.add('focus')});
+        boxes[0].classList.remove("focus");
+        boxes[0].classList.toggle("focus");
+        boxes[0].classList.replace("focus", "blurred");
+    </script>
+</body>
+</html>
