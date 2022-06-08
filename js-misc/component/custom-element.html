@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom-element</title>
+</head>
+<body>
+    <custom-ele title="WC"></custom-ele>
+    <div>
+        <button id="delete-wc">Delete</button>
+    </div>
+    <script>
+        class CustomEle extends HTMLElement {
+            constructor(){
+                super();
+            }
+            //생성시
+            connectedCallback(){
+                this.render();
+            }
+            //새로운 문서로 이동시
+            adoptCallback(){ }
+            //요소의 속성이 추가, 제거, 수정 될때, observedAttributes속서에 나열된 특성들만
+            attributeChangedCallback(attrName, oldVal, newVal){
+                this.render();
+            }
+            //attributeChangedCallback이 참조하는 속성
+            static get objservedAttributes(){
+                return ['title'];
+            }
+            get title(){
+                return this.getAttribute('title');
+            }
+            //element가 제거될 때 호출
+            disconnectedCallback(){
+                alert('bye');
+            }
+            //custom method
+            render(){
+                this.innerHTML = `<h1>${this.title}</h1>`;
+            }
+        }
+        window.customElements.define('custom-ele', CustomEle);
+    </script>
+</body>
+</html>
