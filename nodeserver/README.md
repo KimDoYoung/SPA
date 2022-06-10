@@ -10,6 +10,7 @@ nodeserver
 
 1. npm init
 2. npm i express --save
+3. node app.js
 
 ## using
 
