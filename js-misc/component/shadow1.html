@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadow</title>
+    <style>
+        h1 {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <custom-ele title="WC">
+        <h1 slot="second">Custom Content1</h1>
+        <h1 slot="first">Custom Content2</h1>
+    </custom-ele>
+    <script>
+        class CustomEle extends HTMLElement {
+            constructor(){
+                super();
+                this.attachShow({mode : 'open'});
+                this.shadowRoot.innerHTML = `
+                    <style>h1{color:red}</style>
+                    <h1>custom content</h1>
+                    <slot name="first"/>
+                    <slot name="second"/>
+                `;
+            }
+        }
+        window.customElements.define('custom-ele', CustomEle);
+    </script>
+</body>
+</html>

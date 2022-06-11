@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <style>
+        body, html {
+            height : 100%;
+        }
+        #main {
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            height : 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <template id="wc-template">
+        <h1>WC - Template</h1>
+    </template>
+    <script>
+        if( 'content' in document.createElement('template')) {
+            console.log('this browser support template');
+            var wctemplate = document.querySelector('#wc-template');
+            var clone = document.importNode(wctemplate, true);
+            document.getElementById('main').appendChild(clone.content);
+        }else{
+            console.error('this browser NOT support template');
+        }
+    </script>
+</body>
+</html>
