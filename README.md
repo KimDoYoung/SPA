@@ -1,6 +1,12 @@
 Single Page Application 관련 기술들
 ==================================
 
+## nodejs의 centos에 설치 그리고 application의 설치
+
+- [app on centos](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-centos-7)
+    - reverse proxy라는 개념
+    - PM2
+
 ## SPA front-end 개발에 대한 나의 생각
 
 front-end에 너무 많은 기술들이 있다. 더우기 버전업도 빠르다.

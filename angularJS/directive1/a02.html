@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>directive1</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js' integrity='sha512-KMPrOyKoxZ63TdrHyYlRKwGX6eWGe98FYBjv65BWaH9E2GoE9VXY+Mmj3WKWwBTchwj64ZeDlYjEkN3A6uJyKQ==' crossorigin='anonymous'></script>    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.js' integrity='sha512-klc+qN5PPscoGxSzFpetVsCr9sryi2e2vHwZKq43FdFyhSAa7vAqog/Ifl8tzg/8mBZiG2MAKhyjH5oPJp65EA==' crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.css' integrity='sha512-vA/fpEI8+rrDsPceGG+Rz4NBhaNE4lvJ8CrNfspqDQi6uyIs82Hwr8gm/E+SRs+ZKjJ2ihOdb6esDSAuJrWOhg==' crossorigin='anonymous'/>
+</head>
+<body ng-app="app">
+    <h1>directive가 rendering 될때까지의 단계를 보여주는 샘플임</h1>
+    <div ng-controller="msg">
+        <div message text="{{i}}" ng-repeat="i in [1,2,3,4,5]">
+            {{i}}
+        </div>
+    </div>
+    
+
+    <script src="a02.js"></script>
+</body>
+</html>  
