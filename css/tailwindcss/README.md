@@ -16,7 +16,7 @@ tailwindcss
 ## 순서
 
 npm init -y
-npm install tailwindcss@latest ( --full 옵션으로 다 뽑아서 확인)
+npm install -D tailwindcss@latest ( --full 옵션으로 다 뽑아서 확인)
 npm install @tailwindcss/typograph 
 mkdir src
 mkdir dist
@@ -33,4 +33,13 @@ npx tailwindcss init
 ```
 "build-css": "tailwindcss build src/styles.css -o dist/styles.css"
 "css-watch" : "npx tailwindcss -i ./src/style.css -o ./dist/style.css --watch"
+``` 
+
+## 의문점
+
+1. plugin은 무엇인가?
+- typograph 는 뭐지?
+- forms
 ```
+npm uninstall @tailwindcss/custom-forms
+npm install @tailwindcss/forms
