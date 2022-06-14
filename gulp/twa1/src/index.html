@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>starter kit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="app">
+    <!-- 코멘트 -->
+    <div class="grid grid-cols-2 gap-2">
+        <div class="col-span-2 h-10 bg-green-100">
+            <a href="#/">Home1</a>
+        </div>
+        <div class="w-1/4 h-full bg-purple-200">
+            <a href="#/first-msg">first msg</a> <br>
+            <a href="#/second-msg">second msg</a>
+        </div>
+        <div class="w-3/4 h-full">
+            <ui-view></ui-view>
+        </div>
+        <div class="col-span-2 h-10 bg-gray-100">footer</div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.min.js"></script> 
+<script src="app/scripts.js"></script>
+</body>
+</html>
