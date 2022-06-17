@@ -1,5 +1,15 @@
-require('./app_module');
-require('./app_config');
+var app = require('./app_module');
+
+//config (routing information)
+var config = require('./app_config');
+app.config( config );
+
+//services
+app.service('dateService', require('./common/dateService'));
+
+//directives
+app.directive('myMsg', require('./components/common/msgDirective'));
+
 //controllers
-require('./views/sub1/msg1Controller');
-require('./views/sub1/msg2Controller');
+app.controller('msg1', require('./views/sub1/msg1Controller'));
+app.controller('msg2', require('./views/sub1/msg2Controller') );

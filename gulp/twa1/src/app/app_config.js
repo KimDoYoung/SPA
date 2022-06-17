@@ -1,6 +1,6 @@
-var app = require('./app_module');
+//var app = require('./app_module');
 
-app.config(config);
+//app.config(config);
 
 function config($stateProvider, $urlRouterProvider, $locationProvider){
     $locationProvider.hashPrefix(''); //이게 없으면 안되네.
@@ -22,3 +22,4 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
 
     $urlRouterProvider.otherwise('/');
 }
+module.exports = config;
