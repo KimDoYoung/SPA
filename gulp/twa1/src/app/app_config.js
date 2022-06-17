@@ -1,8 +1,8 @@
 var app = require('./app_module');
 
-app.config(__config);
+app.config(config);
 
-function __config($stateProvider, $urlRouterProvider, $locationProvider){
+function config($stateProvider, $urlRouterProvider, $locationProvider){
     $locationProvider.hashPrefix(''); //이게 없으면 안되네.
     $stateProvider
     .state('firstMessage', {

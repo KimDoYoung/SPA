@@ -67,7 +67,8 @@ function devStyles(){
 // }
 function devScripts(){
     return src([
-        `${options.paths.src.js}/app_config.js`
+        // `${options.paths.src.js}/app_config.js`
+        `${options.paths.src.js}/main.js`
     ])
     .pipe(browserify({insertGlobals: true}))
     .pipe(concat({path:'scripts.js'}))
