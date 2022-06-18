@@ -20,7 +20,7 @@ function livePreview(done){
     browserSync.init({
         server :{
             baseDir : options.paths.dist.base,
-            // proxy: "yourlocal.dev"
+            // proxy: "jskn.iptime.org:8282"
         },
         port : options.config.port || 5000
     });

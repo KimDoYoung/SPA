@@ -1,0 +1,21 @@
+<div>
+    <div ng-show="isLoading" class="text-red-300">
+        Loading....
+    </div>
+    <div ng-show="!isLoading">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items track by $index">
+                    <td><a href="#/employees/{{item.id}}">{{item.id}}</a></td>
+                    <td><a href="#/employees/{{item.id}}">{{item.name}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

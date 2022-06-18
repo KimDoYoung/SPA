@@ -1,0 +1,16 @@
+<div ng-show="isLoading" class="border-red-200">
+    <span class="text-red-500 text-2xl">wait...</span> 
+</div>
+<div ng-show="isNotFound" class="border-red-200">
+    <span class="text-red-500 text-2xl">not found user by id {{id}} </span> 
+    <div>
+        <a href="#/employees" class="p-2">Back to List</a>
+    </div>
+</div>
+<div ng-show="employee">
+    <p>id : {{employee.id}}</p>
+    <p>name : {{employee.name}}</p>
+    <div>
+        <a href="#/employees" class="p-2">go to List</a>
+    </div>
+</div>
