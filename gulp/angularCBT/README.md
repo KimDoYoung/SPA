@@ -11,6 +11,9 @@ tailwindcss와 angularjs 연습
 - require를 사용하여 모듈을 분할함.
 - okds homepage와 유사한 개발환경을 설정함.
 
+## 참고 url
+
+[$transition](https://ui-router.github.io/guide/transitionhooks)
 
 ## folder
 

@@ -4,9 +4,15 @@ var app = require('./app_module');
 var config = require('./app_config');
 app.config( config );
 
+//run
+app.run(require('./app_run'));
+
+//provider
 app.provider('dataService', require('./app_provider'));
+
 //services
-//app.service('dateService', require('./common/dateService'));
+app.service('sessionStorage', require('./common/sessionStorageService'));
+app.service('localStorage', require('./common/localStorageService'));
 
 //directives
 //app.directive('myMsg', require('./components/common/msgDirective'));
