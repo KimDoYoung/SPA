@@ -7,6 +7,8 @@ gulp-test
 - gulp 는 grunt와 유사한 task runner 이다.
 - gulp version 4부터 이전과 문법이 틀려졌다.
 
+- 이 폴더는 각 모듈을 require하는 것은 안된다.
+
 ## commands
 
 1. node -v
