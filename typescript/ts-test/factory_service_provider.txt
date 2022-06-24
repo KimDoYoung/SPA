@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.1/angular.min.js"></script>
+	<meta charset=utf-8 />
+	<title>JS Bin</title>
+</head>
+<body ng-controller="MyCtrl">
+	{{serviceOutput}}
+	<br/><br/>
+	{{factoryOutput}}
+	<br/><br/>
+	{{providerOutput}}
+
+	<script>
+
+		var app = angular.module( 'app', [] );
+
+		var MyFunc = function() {
+
+			this.name = "default name";
+
+			this.$get = function() {
+				this.name = "new name"
+				return "Hello from MyFunc.$get(). this.name = " + this.name;
+			};
+
+			return "Hello from MyFunc(). this.name = " + this.name;
+		};
+
+		// returns the actual function
+		app.service( 'myService', MyFunc );
+
+		// returns the function's return value
+		app.factory( 'myFactory', MyFunc );
+
+		// returns the output of the function's $get function
+		app.provider( 'myProv', MyFunc );
+
+		function MyCtrl( $scope, myService, myFactory, myProv ) {
+
+			$scope.serviceOutput = "myService = " + myService;
+			$scope.factoryOutput = "myFactory = " + myFactory;
+			$scope.providerOutput = "myProvider = " + myProv;
+
+		}
+
+	</script>
+
+</body>
+</html>
+
+// ------------------------------------------
+
+var myApp = angular.module('myApp', []);
+
+//service style, probably the simplest one
+myApp.service('helloWorldFromService', function() {
+    this.sayHello = function() {
+        return "Hello, World!";
+    };
+});
+
+//factory style, more involved but more sophisticated
+myApp.factory('helloWorldFromFactory', function() {
+    return {
+        sayHello: function() {
+            return "Hello, World!";
+        }
+    };
+});
+    
+//provider style, full blown, configurable version     
+myApp.provider('helloWorld', function() {
+
+    this.name = 'Default';
+
+    this.$get = function() {
+        var name = this.name;
+        return {
+            sayHello: function() {
+                return "Hello, " + name + "!";
+            }
+        }
+    };
+
+    this.setName = function(name) {
+        this.name = name;
+    };
+});
+
+//hey, we can configure a provider!            
+myApp.config(function(helloWorldProvider){
+    helloWorldProvider.setName('World');
+});
+        
+
+function MyCtrl($scope, helloWorld, helloWorldFromFactory, helloWorldFromService) {
+    
+    $scope.hellos = [
+        helloWorld.sayHello(),
+        helloWorldFromFactory.sayHello(),
+        helloWorldFromService.sayHello()];
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<body ng-app="myApp">
+<div ng-controller="MyCtrl">
+    {{hellos}}
+</div>
+</body>
