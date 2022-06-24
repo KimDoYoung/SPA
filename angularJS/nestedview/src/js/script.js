@@ -33,12 +33,48 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         }
     })
     .state('departure.add', {
-        url: "/departure/add",
+        url : '/add',
         views : {
             'bottom-view@departure' : {
                 templateUrl : 'tpl/departure.add.html'
             }
         }
+    })    
+    .state('departure.list', {
+        views : {
+            'bottom-view@departure' : {
+                templateUrl : 'tpl/departure.list.html'
+            }
+        }
+    })    
+    //arrival
+    .state('arrival', {
+        url : '/arrival',
+        views : {
+            'menu-view' : {
+                templateUrl : 'tpl/menu.html'
+            },
+            'container-view' : {
+                templateUrl : 'tpl/arrival.html'
+            } 
+        }
     })
+    .state('arrival.add', {
+        url : '/add',
+        views : {
+            'bottom-view@arrival' : {
+                templateUrl : 'tpl/arrival.add.html'
+            }
+        }
+    })
+    .state('arrival.list', {
+        url : '/list',
+        views : {
+            'bottom-view@arrival' : {
+                templateUrl : 'tpl/arrival.list.html'
+            }
+        }
+    })
+    ;;;;;;
 });
 
