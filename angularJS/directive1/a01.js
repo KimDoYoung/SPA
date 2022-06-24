@@ -21,7 +21,6 @@ app.directive('message', function(){
         controller : function($scope, $element, $attrs){
             console.log($attrs.text + ' In Controller');
         }
-
     }
     
 });
