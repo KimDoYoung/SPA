@@ -7,6 +7,9 @@ app.config( config );
 //run
 app.run(require('./app_run'));
 
+//constant
+app.constant('dateUtil', require('./common/dateUtil.js'));
+
 //provider
 app.provider('dataService', require('./app_provider'));
 
