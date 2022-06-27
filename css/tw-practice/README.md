@@ -8,6 +8,12 @@ blog만들기
 - [강의 url](https://github.com/digitshack/tailwindcss-course)
 - [tailwind 홈의 설치](https://tailwindcss.com/docs/installation)
 
+## 실행
+
+- npm run css
+    - style.css를 dist에 만든다.
+- dist폴더의 html을 live로 보기로 하면 잘 적용이 되지 않는다
+
 ## 설치
 
 1. versions
