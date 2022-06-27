@@ -12,7 +12,8 @@ blog만들기
 
 - npm run css
     - style.css를 dist에 만든다.
-- dist폴더의 html을 live로 보기로 하면 잘 적용이 되지 않는다
+- dist1폴더의 html을 live로 보기로 하면 잘 적용이 되지 않는다
+- dist폴더명은 gitignore에 기술되어 있어서 dist1로 함
 
 ## 설치
 
