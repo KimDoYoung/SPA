@@ -28,10 +28,13 @@ var app = angular.module("app", []);
 app.constant('appConfig', {
     hostname : 'http://kalpa.iptime.org',
     port : '2020',
-    server : function(){ return 'http://'+this.hostname;}
+    server : function(){ return  this.hostname + ':' + this.port;}
 });
-app.controller("ctrl1", function($scope, appConfig){
-    $scope.dataBase = appConfig.server ;//appConfig.databseUrl + ':' + appConfig.port;
+app.constant('PI', 3.14); // 이렇게 막 쓰는구나.
+app.value('appValue', {'companyName': 'OK저축은행'});
+
+app.controller("ctrl1", function($scope, appConfig, appValue){
+    $scope.dataBase = appConfig.server() + appValue.companyName;//appConfig.databseUrl + ':' + appConfig.port;
     $scope.data = { time : new Date() };
     $scope.updateTime = function(){
         $scope.data.time = new Date();

@@ -1,5 +1,6 @@
 angularJS 연습
 ==============
+
 ## 목적
 
 angularJS를 이용해서 SPA를 만들기 위해서 angularJS 관련 코드를 짜보면서 연습
@@ -8,8 +9,6 @@ angularJS를 이용해서 SPA를 만들기 위해서 angularJS 관련 코드를 
 - 부가적으로 tailwind.css를 사용
 - index.html 
 
-## angularJS 공부항목
- 
 
 ## vs-code shot key
 
@@ -28,23 +27,32 @@ angularJS를 이용해서 SPA를 만들기 위해서 angularJS 관련 코드를 
 13. 범위선택 후 alt + shft + i : 멀티커서가 맨뒤에
 
 
-## directive
-
-- directive는 angularJS의 꽃
-
 
 ## 유튜브
 
 https://www.youtube.com/watch?v=FlUCU13dJyo&list=PL4cUxeGkcC9gsJS5QgFT2IvWIX78dV3_v
 
 
-## service, factory, provider
+## Factory, Service, Value, Constant, Provider
 
 [차이점](https://stackoverflow.com/questions/28467793/angular-js-factory-vs-service-vs-provider-by-example)
 
 - 이런 차이점을 아는 것이 무슨 상관이 있는가?
 - 차라리 1가지만 있는게 좋지 않을까 다들 유사한데. service든, factory든.
 - Factory, Service, Value, constant Provider 이런 것들이 있다.
+
+###  Constant
+
+- 상수만 정의 하자.
+```javascript 
+app.constant('appConst', {
+  compnayTel : '222-222',
+  name : function(){ return 'abc'} /* 이렇게는 쓰지 말자*/
+});
+```
+
+### Value
+- constant와 유사한데 사용하지 말자.
 
 ### factory example
 
@@ -115,3 +123,8 @@ app.config(function (myProviderProvider) {
         });
     });
 ```
+
+## directive
+
+- directive는 angularJS의 꽃
+
