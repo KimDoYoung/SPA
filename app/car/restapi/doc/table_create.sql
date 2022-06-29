@@ -1,4 +1,6 @@
 database: jskndb, kdy987/kalpa987
+
+
 drop table if exists car;
 create table if not exists car (
     id int primary key auto_increment comment 'id',
@@ -16,12 +18,13 @@ create table if not exists car (
     upd_dt timestamp default current_timestamp comment '수정 datetime'
 )ENGINE=INNODB  comment '차계부';
 
-drop table if exists car_user;
-create table if not exists car_user (
+drop table if exists users;
+create table if not exists users (
     user_id varchar(20) not null comment 'user id',
     user_pw varchar(100) not null comment 'user pw',
+    nm varchar(10) not null comment 'user name',
     primary key(user_id)
-)ENGINE=INNODB comment 'car user';
+)ENGINE=INNODB comment 'account user';
 
 drop table if exists car_file;
 create table if not exists car_file (
