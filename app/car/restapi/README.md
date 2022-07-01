@@ -1,5 +1,5 @@
-car 차계부 restapi
-==================
+car restapi
+===========
 
 ## 개요
 
@@ -8,6 +8,8 @@ car 차계부 restapi
 - node로 restapi를 구성, mysql사용 express사용
 - nodemon도 설치하여 사용해 본다.
     - nodemon app.js
+- ES모듈의 사용 (import/export)
+    - CommonJS를 모듈시스템으로 사용한 nodejs에서 서서히 ES모듈로 변화한다고 한다
 
 ## 참고
 
@@ -20,3 +22,28 @@ car 차계부 restapi
 2. npm i -D express
 3. npm i -g nodemon
 
+
+## ES 모듈 vs CommonJS
+- ES6코드를 실행하기 위해서는 babel을 이용해야한다
+- ES가 최신이다.
+- node 13.2이상에서 사용가능
+- "type" : "module"
+```javascript
+const m = require('moment');
+import m from 'moment';
+```
+- export로 내보니기
+```javascript
+export function func1()...
+function func2()...
+export { func2 };
+export default {
+    aaa() { return 1},
+    bbb() { return 2}
+}
+```
+- import로 불러오기
+```javascript
+import {b} from './currency-function';
+import * as currency from '...';
+```
