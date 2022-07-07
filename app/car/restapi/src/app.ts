@@ -1,13 +1,10 @@
 // const express = require('express');
 // const cors = require('cors');
-
-import express from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import config from './config.js';
-import carRouter from './router/car-router.js';
+import carRouter from './router/car-router';
 
-const app = express();
-const port = 3000;
+const app: Application = express();
 app.use( cors() );
 app.use( express.json() );
 app.use(
@@ -23,8 +20,4 @@ app.get('/', (req, res)=>{
 //router
 app.use('/car', carRouter);
 
-//listen
-app.listen( port, () => {
-    console.log(` running car at http://localhost:${port}`);
-    console.log(config.db.host);
-});
+export default app;

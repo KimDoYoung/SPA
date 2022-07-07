@@ -11,6 +11,9 @@ car restapi
 - ES모듈의 사용 (import/export)
     - CommonJS를 모듈시스템으로 사용한 nodejs에서 서서히 ES모듈로 변화한다고 한다
 
+- typescript를 사용하자.
+- mariadb 연결
+
 ## 참고
 
 - nvlife 
@@ -21,7 +24,36 @@ car restapi
 1. npm init -y
 2. npm i -D express
 3. npm i -g nodemon
+4. npm i -D typescript ts-node @types/node @types/express
+5. npm i cors
+6. npm i -D @types/cors
+## Errors
+- Unknown file extension ".ts" 
+> "type":"module"을 지운다.
+> typescript로 하면 그냥 import/export를 쓰면 되는 듯.
 
+##  tsconfig
+- 참고용
+```javascript
+{
+   "compilerOptions": {
+      "lib": [
+         "es6"
+      ],
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "dist",
+      "resolveJsonModule": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+   },
+   "include": ["src/**/*.ts"],
+   "exclude": ["node_modules", "**/*.spec.ts"]
+}
+```
 
 ## ES 모듈 vs CommonJS
 - ES6코드를 실행하기 위해서는 babel을 이용해야한다
