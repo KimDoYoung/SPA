@@ -49,7 +49,7 @@ dotenv.config({
 ## 고려사항
 
 - logging
-- eslint
+- [eslint + prettier](https://pravusid.kr/typescript/2020/07/19/typescript-eslint-prettier.html)
 - security (helmet)
 - jwt or session
 - myBatis의 사용
