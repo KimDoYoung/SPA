@@ -1,3 +1,6 @@
+import express, { Request, Response, NextFunction } from 'express';
+import { MariaDB } from '../database';
+
 export default class CarController{
     private static _instance: CarController
 
@@ -7,19 +10,20 @@ export default class CarController{
     public static get instance():CarController {
         return this._instance || (this._instance = new this())
     }
-    list(){
+    list(req: Request, res: Response , next: NextFunction){
+        let rows= MariaDB.instance.executeQuery('select * from ap_user');
+        res.status(200).json({message:'list OK', data : rows})
+    }
+    get(req: Request, res: Response , next: NextFunction){
 
     }
-    get(){
+    insert(req: Request, res: Response , next: NextFunction){
 
     }
-    insert(){
+    update(req: Request, res: Response , next: NextFunction){
 
     }
-    update(){
-
-    }
-    delete(){
+    delete(req: Request, res: Response , next: NextFunction){
         
     }
 }

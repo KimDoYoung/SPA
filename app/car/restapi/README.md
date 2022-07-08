@@ -46,6 +46,45 @@ dotenv.config({
   - NODE_ENV=development 
 5. root폴더에 즉 package.json 이 있는 folder 에 .env를 두어야한다
 
+## 고려사항
+
+- logging
+- eslint
+- security (helmet)
+- jwt or session
+- myBatis의 사용
+
+## logging
+ - winston + morgan
+ - [blog1](https://sematext.com/blog/node-js-logging/)
+
+## eslint
+[blog1](https://blog.appsignal.com/2022/01/19/how-to-set-up-a-nodejs-project-with-typescript.html)
+ 1. $ npm install eslint --save-dev
+ 2. $ npm install @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
+  3. **.eslintrc.js** 생성
+ ```javascript
+ module.exports = {
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest", // Allows the use of modern ECMAScript features
+    sourceType: "module", // Allows for the use of imports
+  },
+  extends: ["plugin:@typescript-eslint/recommended"], // Uses the linting rules from @typescript-eslint/eslint-plugin
+  env: {
+    node: true, // Enable Node.js global variables
+  },
+
+  rules: {
+    'no-console': 'off',
+    'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+  },
+};
+4. package.json 에
+- "lint" : "eslint . --fix"
+ ```
+
 ## Errors
 - Unknown file extension ".ts" 
 > "type":"module"을 지운다.

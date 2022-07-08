@@ -16,9 +16,9 @@ class MariaDB {
         });
         this.dbConnect();
     }
-    private dbConnect(): void{
+    private async dbConnect() {
         try {            
-            this.pool.getConnection()
+            await this.pool.getConnection()
             console.log('connection OK...')
         } catch (error) {
             console.error(error)
@@ -30,16 +30,16 @@ class MariaDB {
         }
         return this._instance;
     }
-    public static async executeQuery(query: string){
+    public async executeQuery(query: string){
         let conn: mariadb.Connection;
+        conn = await this.pool.getConnection()
         try {
-            conn = await this.instance.pool.getConnection();
 	        const rows = await conn.query("SELECT 1 as val");
             return rows;
         } catch (error) {
             throw error;
         } finally {
-           // conn.destroy;
+            conn.end();
         }
     }
 }

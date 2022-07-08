@@ -7,10 +7,8 @@ dotenv.config({
     )
 })
 // port  = parseInt( process.env.SERVER_PORT, 10);
-console.log('SERVER_PORT : ', process.env.SERVER_PORT )
-console.log('MARIA_DATABASE : ', process.env.MARIA_DATABASE )
-const 
-config = {
+console.log('NODE_ENV : ', process.env.NODE_ENV )
+const config = {
     port : parseInt( process.env.SERVER_PORT || '3000', 10 ), 
     db : {
         host : process.env.MARIA_HOST,
