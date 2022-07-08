@@ -27,6 +27,25 @@ car restapi
 4. npm i -D typescript ts-node @types/node @types/express
 5. npm i cors
 6. npm i -D @types/cors
+
+## dotenv
+
+1. npm i --save dotenv, npm i --save-dev @types/dotenv
+2. 기본적으로 root의 .env를 읽어들인다.
+3. Node.js는 NODE_ENV라는 환경변수를 활용하여 서버의 환경을 구분합니다. 
+```javascript
+import * as dotenv from 'dotenv';
+dotenv.config({
+  path: path.resolve(
+    (process.env.NODE_ENV === 'production') ? '.production.env'
+      : (process.env.NODE_ENV === 'stage') ? '.stage.env' : '.development.env'
+  )
+});
+```
+4. package.json node start
+  - NODE_ENV=development 
+5. root폴더에 즉 package.json 이 있는 folder 에 .env를 두어야한다
+
 ## Errors
 - Unknown file extension ".ts" 
 > "type":"module"을 지운다.
