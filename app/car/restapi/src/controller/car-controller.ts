@@ -1,18 +1,34 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { MariaDB } from '../database';
+import { Service } from '../service';
 
 export default class CarController{
     private static _instance: CarController
-
+    private service: Service
     private constructor(){
         console.log('CarController intialize...')        
+        this.service = new Service();
     }
     public static get instance():CarController {
         return this._instance || (this._instance = new this())
     }
     list(req: Request, res: Response , next: NextFunction){
-        let rows= MariaDB.instance.executeQuery('select * from ap_user');
-        res.status(200).json({message:'list OK', data : rows})
+        console.log('/car/list... ')
+        this.service.listAll(res)
+        .then((resultData)=>{
+            console.log(resultData);
+            res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
+        })
+        .catch((error)=>{
+            res.status(500).json({resultCode:'99', resultMessage: error.text })
+        })
+
+        // .then(resultData=>{})
+        // this.service.listPage()
+        // this.service.get()
+        // this.service.update()
+        // this.service.delete()
+
+
     }
     get(req: Request, res: Response , next: NextFunction){
 

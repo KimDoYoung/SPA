@@ -7,13 +7,21 @@ class MariaDB {
 
     private constructor(){
         console.log('MariaDB class intialize....')
-        this.pool = mariadb.createPool({
-            host : config.db.host,
-            user : config.db.user,
-            password : config.db.password,
-            database : config.db.database,
-            connectionLimit : config.db.connectionLimit
-        });
+        let config = {
+            host : 'kalpa.iptime.org',
+            user : 'kdy987',
+            password : 'kalpa987',
+            database : 'kalpadb',
+            connectionLimit : 3
+        }
+        this.pool = mariadb.createPool(config)
+        // this.pool = mariadb.createPool({
+        //     host : config.db.host,
+        //     user : config.db.user,
+        //     password : config.db.password,
+        //     database : config.db.database,
+        //     connectionLimit : config.db.connectionLimit
+        // });
         this.dbConnect();
     }
     private async dbConnect() {
@@ -34,9 +42,10 @@ class MariaDB {
         let conn: mariadb.Connection;
         conn = await this.pool.getConnection()
         try {
-	        const rows = await conn.query("SELECT 1 as val");
+	        const rows = await conn.query(query);
             return rows;
         } catch (error) {
+            console.error(error)
             throw error;
         } finally {
             conn.end();

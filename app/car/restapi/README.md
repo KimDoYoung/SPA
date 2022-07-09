@@ -52,7 +52,8 @@ dotenv.config({
 - [eslint + prettier](https://pravusid.kr/typescript/2020/07/19/typescript-eslint-prettier.html)
 - security (helmet)
 - jwt or session
-- myBatis의 사용
+- [mybatis-mapper의 사용](https://www.npmjs.com/package/mybatis-mapper)
+
 
 ## logging
  - winston + morgan
