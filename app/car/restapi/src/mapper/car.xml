@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car">  
+  <select id="list-count">
+    SELECT count(*) as totalCount
+    FROM car
+    WHERE 1=1
+    <include refid='list-where'/>
+  </select>
+  <select id="list">
+    SELECT
+        id,
+        ymd,
+        event_cd,
+        event_nm,
+        km,
+        ju_cost,
+        ju_place,
+        ju_wonja,
+        jb_cost,
+        jb_place,
+        jb_note,
+        upd_id,
+        upd_dt
+    FROM
+        jskndb.car
+    WHERE 1=1    
+      <include refid='list-where'/>
+    ORDER BY
+        upd_dt DESC    
+  </select>
+  <sql id='list-where'>
+      <if test="fromYmd != null and fromYmd != ''">
+        AND #{fromYmd} <![CDATA[ <= ]]> ymd
+      </if>
+      <if test="toYmd != null and toYmd != ''">
+        AND ymd <![CDATA[ <= ]]>  #{toYmd}
+      </if>
+  </sql>
+</mapper>

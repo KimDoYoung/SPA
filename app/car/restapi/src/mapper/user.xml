@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">  
+  <select id="list">
+    SELECT
+        id,
+        ymd,
+        event_cd,
+        event_nm,
+        km,
+        ju_cost,
+        ju_place,
+        ju_wonja,
+        jb_cost,
+        jb_place,
+        jb_note,
+        upd_id,
+        upd_dt
+    FROM
+        jskndb.car
+    ORDER BY
+        upd_dt DESC    
+  </select>
+</mapper>

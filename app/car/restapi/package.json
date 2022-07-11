@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "set NODE_ENV=development && nodemon -x ts-node src/index.ts",
+    "dev": "set NODE_ENV=development && nodemon -x ts-node src/index.ts src/mapper/*.xml",
     "build": "tsc -p ."
   },
   "keywords": [],

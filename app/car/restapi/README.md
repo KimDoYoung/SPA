@@ -91,6 +91,20 @@ dotenv.config({
 > "type":"module"을 지운다.
 > typescript로 하면 그냥 import/export를 쓰면 되는 듯.
 
+## singleton 기법
+```javascript
+class Simple {
+    private static _instance: Simple
+
+    private constructor () {
+    }
+	
+    // 메소드 이름은 달라도 상관없다.
+    public static get instance () {
+        return this._instance || (this._instance = new this())
+    }
+}
+```
 ##  tsconfig
 - 참고용
 ```javascript

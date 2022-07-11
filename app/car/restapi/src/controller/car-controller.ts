@@ -1,45 +1,43 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { Service } from '../service';
+import { SqlParams, ControllerBase } from '../types'
 
-export default class CarController{
+export default class CarController extends ControllerBase {
     private static _instance: CarController
-    private service: Service
     private constructor(){
+        super()
         console.log('CarController intialize...')        
-        this.service = new Service();
     }
     public static get instance():CarController {
         return this._instance || (this._instance = new this())
     }
-    list(req: Request, res: Response , next: NextFunction){
+
+    public list(req: Request, res: Response , next: NextFunction){
         console.log('/car/list... ')
-        this.service.listAll(res)
+        let sqlParams: SqlParams = {'fromYmd':'20220101'}
+        Service.instance.list('car.list1', sqlParams)
         .then((resultData)=>{
             console.log(resultData);
-            res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
+            // res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
+            res.status(200).json(this.success(resultData))
         })
         .catch((error)=>{
-            res.status(500).json({resultCode:'99', resultMessage: error.text })
+            let e = new String(error)
+            console.log('[' + e + ']')
+            // res.status(500).json({resultCode:'99', resultMessage: 'unknown error', timestamp: new Date().getTime() })
+            res.status(500).json(this.fail())
         })
-
-        // .then(resultData=>{})
-        // this.service.listPage()
-        // this.service.get()
-        // this.service.update()
-        // this.service.delete()
-
+    }
+    public get(req: Request, res: Response , next: NextFunction){
 
     }
-    get(req: Request, res: Response , next: NextFunction){
+    public insert(req: Request, res: Response , next: NextFunction){
 
     }
-    insert(req: Request, res: Response , next: NextFunction){
+    public update(req: Request, res: Response , next: NextFunction){
 
     }
-    update(req: Request, res: Response , next: NextFunction){
-
-    }
-    delete(req: Request, res: Response , next: NextFunction){
+    public delete(req: Request, res: Response , next: NextFunction){
         
     }
 }
