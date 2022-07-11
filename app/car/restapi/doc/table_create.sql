@@ -1,6 +1,3 @@
-database: jskndb, kdy987/kalpa987
-
-
 drop table if exists car;
 create table if not exists car (
     id int primary key auto_increment comment 'id',
@@ -16,7 +13,7 @@ create table if not exists car (
 	jb_note text null comment '정비내용',
     upd_id varchar(20) not null comment '수정자 id',
     upd_dt timestamp default current_timestamp comment '수정 datetime'
-)ENGINE=INNODB  comment '차계부';
+)ENGINE=INNODB CHARSET=utf8 comment '차계부';
 
 drop table if exists users;
 create table if not exists users (
@@ -24,7 +21,7 @@ create table if not exists users (
     user_pw varchar(100) not null comment 'user pw',
     nm varchar(10) not null comment 'user name',
     primary key(user_id)
-)ENGINE=INNODB comment 'account user';
+)ENGINE=INNODB CHARSET=utf8 comment 'account user';
 
 drop table if exists car_file;
 create table if not exists car_file (
@@ -34,7 +31,7 @@ create table if not exists car_file (
     org_nm  varchar(100) not null comment '원래파일명',
     ext varchar(20) null comment '확장자',
     size long not null comment '파일크기'
-)ENGINE=INNODB comment '첨부파일';
+)ENGINE=INNODB CHARSET=utf8  comment '첨부파일';
 
 
 drop table if exists car_file_match;
@@ -42,5 +39,5 @@ create table if not exists car_file_match(
     car_id int not null comment 'table car id',
     file_id int not null comment 'table file id',
     primary key (car_id, file_id)
-)ENGINE=INNODB comment 'car file match';
+)ENGINE=INNODB CHARSET=utf8 comment 'car file match';
 

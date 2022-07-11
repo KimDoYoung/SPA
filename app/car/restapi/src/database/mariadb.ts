@@ -7,14 +7,14 @@ class MariaDB {
 
     private constructor(){
         console.log('MariaDB class intialize....')
-        let config = {
-            host : 'kalpa.iptime.org',
-            user : 'kdy987',
-            password : 'kalpa987',
-            database : 'kalpadb',
-            connectionLimit : 3
-        }
-        this.pool = mariadb.createPool(config)
+        // let config = {
+        //     host : 'kalpa.iptime.org',
+        //     user : 'kdy987',
+        //     password : 'kalpa987',
+        //     database : 'kalpadb',
+        //     connectionLimit : 3
+        // }
+        this.pool = mariadb.createPool(config.MARIA_DB)
         // this.pool = mariadb.createPool({
         //     host : config.db.host,
         //     user : config.db.user,

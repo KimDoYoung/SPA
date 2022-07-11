@@ -15,17 +15,17 @@ export default class CarController extends ControllerBase {
     public list(req: Request, res: Response , next: NextFunction){
         console.log('/car/list... ')
         let sqlParams: SqlParams = {'fromYmd':'20220101'}
-        Service.instance.list('car.list1', sqlParams)
+        Service.instance.list('car.list', sqlParams)
         .then((resultData)=>{
             console.log(resultData);
             // res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
-            res.status(200).json(this.success(resultData))
+            res.status(200).json(super.success(resultData))
         })
         .catch((error)=>{
             let e = new String(error)
             console.log('[' + e + ']')
             // res.status(500).json({resultCode:'99', resultMessage: 'unknown error', timestamp: new Date().getTime() })
-            res.status(500).json(this.fail())
+            res.status(500).json(super.fail())
         })
     }
     public get(req: Request, res: Response , next: NextFunction){
