@@ -152,3 +152,17 @@ export default {
 import {b} from './currency-function';
 import * as currency from '...';
 ```
+
+## git command
+
+- [git alias](https://johngrib.github.io/wiki/git-alias/)
+- git config --list
+- .gitconfig
+```
+[user]
+	name = KimDoYounng
+	email = kdy987@gmail.com
+[alias]
+lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
+s = status -s
+```
