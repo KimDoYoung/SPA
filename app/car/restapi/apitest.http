@@ -2,6 +2,11 @@
 
 ###
 
+GET {{baseUrl}}/car1
+Content-Type: : application/json
+
+###
+
 GET {{baseUrl}}/car/list
 Content-Type: : application/json
 

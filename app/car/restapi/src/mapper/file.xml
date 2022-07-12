@@ -3,22 +3,47 @@
 <mapper namespace="file">  
   <select id="list">
     SELECT
-        id,
-        ymd,
-        event_cd,
-        event_nm,
-        km,
-        ju_cost,
-        ju_place,
-        ju_wonja,
-        jb_cost,
-        jb_place,
-        jb_note,
-        upd_id,
-        upd_dt
+		 id
+		,phy_dir
+		,phy_nm
+		,org_nm
+		,ext
+		,size
     FROM
-        jskndb.car
+        jskndb.file
     ORDER BY
-        upd_dt DESC    
+        id DESC
   </select>
+<insert id="insert">
+	INSERT INTO jskndb.file
+	(
+		 phy_dir
+		,phy_nm
+		,org_nm
+		,ext
+		,size
+	)VALUES(
+		 #{phy_dir}
+		,#{phy_nm}
+		,#{org_nm}
+		,#{ext}
+		,#{size}
+	)
+</insert>
+<update id="update">
+	UPDATE jskndb.file
+	SET
+		 phy_dir = #{phy_dir}
+		,phy_nm = #{phy_nm}
+		,org_nm = #{org_nm}
+		,ext = #{ext}
+		,size = #{size}
+	WHERE 1=1
+		AND id = #{id}
+</update>  
+<delete id="delete">
+	DELETE FROM jskndb.file
+	WHERE 1=1
+		AND id = ${id}
+</delete>  
 </mapper>

@@ -1,6 +1,7 @@
 import express, { Application, Router} from 'express';
 import cors from 'cors'
 import {CarRouter} from './router'
+import {logger, morganMiddleware} from './config'
 
 export default class Server {
     public app: Application
@@ -19,24 +20,25 @@ export default class Server {
     }
     private setupMiddleware(){
         this.app.use( cors() )
+        this.app.use( morganMiddleware )
         this.app.use( express.json() )
         this.app.use( express.urlencoded({ extended: false }) )
     }
     private setupRouter(){
         //car router
         this.app.use('/car', CarRouter);
+
         // 기본경로나 /user말고 다른곳 진입했을경우 실행
         this.app.use((req, res, next) => { 
-            res.status(404).json({ error : 'Not Found111'});
+            const result = {
+                resultCode: '99',
+                resultMessage: 'Not Found',
+                timestamp : new Date().getTime()
+            }
+            res.status(404).json( result );
         });        
     }
-    private displayLogo():void {
-        console.log('----------------------------------------------')
-        console.log('server running...')
-        console.log('----------------------------------------------')
-    }
     public start(callback: Function){
-        this.displayLogo();
         this.app.listen(this.port, callback());
     }
 }

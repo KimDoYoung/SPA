@@ -37,4 +37,58 @@
         AND ymd <![CDATA[ <= ]]>  #{toYmd}
       </if>
   </sql>
+  
+  <insert id="insert" >
+  INSERT INTO technote
+  (
+    ymd,
+    event_cd,
+    event_nm,
+    km,
+    ju_cost,
+    ju_place,
+    ju_wonja,
+    jb_cost,
+    jb_place,
+    jb_note,
+    upd_id,
+    upd_dt
+  )VALUES(
+    #{ymd},
+    #{event_cd},
+    #{event_nm},
+    #{km},
+    #{ju_cost},
+    #{ju_place},
+    #{ju_wonja},
+    #{jb_cost},
+    #{jb_place},
+    #{jb_note},
+    #{upd_id},
+    CURRENT_TIMESTAMP
+  )  
+</insert>
+<update id="update"  >
+UPDATE technote
+SET
+    ymd = #{ymd},
+    event_cd = #{event_cd},
+    event_nm = #{event_nm},
+    km = #{km},
+    ju_cost = #{ju_cost},
+    ju_place = #{ju_place},
+    ju_wonja = #{ju_wonja},
+    jb_cost = #{jb_cost},
+    jb_place = #{jb_place},
+    jb_note = #{jb_note},
+    upd_id = #{upd_id},
+    upd_dt = CURRENT_TIMESTAMP
+WHERE 1=1
+    AND id = #{id}
+</update>
+<delete id="delete">
+DELETE FROM car
+WHERE 1=1
+    AND id = ${id}
+</delete>
 </mapper>

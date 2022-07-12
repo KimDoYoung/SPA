@@ -1,6 +1,6 @@
 //index.ts
-import Config from './config/config'
+import { config, logger } from './config'
 import Server from './server'
 
-const server = Server.init(Config.SERVER_PORT)
-server.start(()=>{console.log(`port :${Config.SERVER_PORT}`)})
+const server = Server.init(config.SERVER_PORT)
+server.start(()=>{logger.info(` server started  port :${config.SERVER_PORT}`)})

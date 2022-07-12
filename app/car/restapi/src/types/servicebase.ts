@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import mybatisMapper from 'mybatis-mapper';
 import SqlParams from './sqlparams'
-
+import {logger} from '../config'
 interface SqlId {
     namespace : string,
     id : string
@@ -21,12 +21,12 @@ class ServiceBase {
     }
     protected loadingXml():void{
         const dir = path.join(__dirname, this.mapperFolder);
-        console.log('dir: ', dir)
+        logger.info('mapper dir: ' + dir)
         let xmlFiles:string[] = []
         const files = fs.readdirSync(dir)
         xmlFiles = files.filter(file => path.extname(file) === '.xml')
                         .map(item=>path.resolve(dir+'/'+item))
-        console.log(xmlFiles)
+        logger.info(xmlFiles)
         mybatisMapper.createMapper( xmlFiles );
     }
     protected getSqlStatement(sqlIdStr: string, sqlParams: SqlParams): string {

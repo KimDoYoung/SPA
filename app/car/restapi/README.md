@@ -58,6 +58,20 @@ dotenv.config({
 ## logging
  - winston + morgan
  - [blog1](https://sematext.com/blog/node-js-logging/)
+ - winston은 logger만드는 것이고 morgan은 http를 consolelog로 인쇄할 수 있게 하는 것이다.
+ - blogs
+  - [Logging 라이브러리 winston 적용하기](https://velog.io/@ash/Node.js-%EC%84%9C%EB%B2%84%EC%97%90-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-winston-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
+  - [Better logs for ExpressJS using Winston and Morgan with Typescript](https://levelup.gitconnected.com/better-logs-for-expressjs-using-winston-and-morgan-with-typescript-1c31c1ab9342)
+  - npm install winston winston-daily-rotate-file
+    * 날짜별로 restapi/logs에 파일이 생긴다. error만 모아서 error파일에 생긴다.
+  - morgan은 http로그를 찍어준다.
+  - npm install morgan @types/morgan
+  - winston과 morgan의 결합
+## path alias 
+> [상대경로를 @로 표현](https://blog.doitreviews.com/development/2020-03-04-using-path-alias-in-typescript/)
+
+- module-alias 설치 
+  * npm i --save module-alias
 
 ## eslint
 [blog1](https://blog.appsignal.com/2022/01/19/how-to-set-up-a-nodejs-project-with-typescript.html)

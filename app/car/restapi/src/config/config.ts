@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
 import path from 'path'
+import logger from './logger'
 
 dotenv.config({
     path : path.resolve(
@@ -7,7 +8,7 @@ dotenv.config({
     )
 })
 // port  = parseInt( process.env.SERVER_PORT, 10);
-console.log('NODE_ENV : ', process.env.NODE_ENV )
+logger.info('NODE_ENV : [' + process.env.NODE_ENV  +']')
 const config = {
     SERVER_PORT : parseInt( process.env.SERVER_PORT || '3000', 10 ), 
     MARIA_DB : {
@@ -20,4 +21,5 @@ const config = {
     },
     pageSize : 10,
 };
+
 export default config;

@@ -1,12 +1,12 @@
 import mariadb from 'mariadb'
-import config from '../config/config'
+import {config, logger} from '../config'
 
 class MariaDB {
     private static _instance: MariaDB;
     private pool: mariadb.Pool;
 
     private constructor(){
-        console.log('MariaDB class intialize....')
+        logger.debug('MariaDB class intialize....')
         // let config = {
         //     host : 'kalpa.iptime.org',
         //     user : 'kdy987',
@@ -27,9 +27,9 @@ class MariaDB {
     private async dbConnect() {
         try {            
             await this.pool.getConnection()
-            console.log('connection OK...')
+            logger.info('connection OK...')
         } catch (error) {
-            console.error(error)
+            logger.error(error)
         }
     }
     public static get instance(): MariaDB {
@@ -45,7 +45,7 @@ class MariaDB {
 	        const rows = await conn.query(query);
             return rows;
         } catch (error) {
-            console.error(error)
+            logger.error(error)
             throw error;
         } finally {
             conn.end();
