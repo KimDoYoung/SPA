@@ -2,18 +2,34 @@
 
 ###
 
-GET {{baseUrl}}/car1
+GET {{baseUrl}}/car/abc
 Content-Type: : application/json
+
+###
+
+GET {{baseUrl}}/car/3
+Content-Type: : "application/json"
 
 ###
 
 GET {{baseUrl}}/car/list
 Content-Type: : application/json
 
-###
+### insert car
 
-POST {{{{baseUrl}}}}/car
+POST {{baseUrl}}/car
+Content-Type: : "application/json; charset=UTF-8"
 
 {
-    'name' : '123'
+    "id": 1,
+   "ymd": "12345"
+}
+
+### update car
+PATCH http://localhost:5000/car
+Content-Type: : "application/json; charset=UTF-8"
+
+{
+    "id" : 1,
+   "ymd": "9999999"
 }

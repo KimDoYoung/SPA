@@ -1,5 +1,6 @@
-import express, { Application, Router} from 'express';
+import express, { Application, Request, Response, NextFunction} from 'express';
 import cors from 'cors'
+import bodyParser from 'body-parser'
 import {CarRouter} from './router'
 import {logger, morganMiddleware} from './config'
 
@@ -20,22 +21,39 @@ export default class Server {
     }
     private setupMiddleware(){
         this.app.use( cors() )
+        // this.app.use( express.json() )
+        // this.app.use( express.urlencoded({ extended: true }) )
         this.app.use( morganMiddleware )
-        this.app.use( express.json() )
-        this.app.use( express.urlencoded({ extended: false }) )
+        this.app.use( bodyParser.json());
+        this.app.use( bodyParser.urlencoded({ extended: true }))
     }
     private setupRouter(){
         //car router
         this.app.use('/car', CarRouter);
 
         // 기본경로나 /user말고 다른곳 진입했을경우 실행
-        this.app.use((req, res, next) => { 
+        this.app.use((req: Request, res: Response, next: NextFunction) => { 
             const result = {
-                resultCode: '99',
+                resultCode: '01',
                 resultMessage: 'Not Found',
                 timestamp : new Date().getTime()
             }
             res.status(404).json( result );
+        });        
+        // Error handling
+        this.app.use((err: any, req: Request, res: Response, next: NextFunction) => { 
+            logger.error("*********************************")
+            logger.error("************** ERROR ************")
+            logger.error("*********************************")
+            err.statusCode = err.statusCode || 500;
+            err.message = err.message || "Internal Server Error";
+            
+            const result = {
+                resultCode: '99',
+                resultMessage: err.message,
+                timestamp : new Date().getTime()
+            }
+            res.status(err.statusCode).json(result);
         });        
     }
     public start(callback: Function){

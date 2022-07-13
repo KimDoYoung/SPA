@@ -53,7 +53,15 @@ dotenv.config({
 - security (helmet)
 - jwt or session
 - [mybatis-mapper의 사용](https://www.npmjs.com/package/mybatis-mapper)
-
+- upload file
+- validation
+  * 입력받은 데이터들 즉 body에 들어가 있는 것들에 대해서 validation체크를한다
+  * [express-validator](https://www.tutsmake.com/validation-in-node-js-express-rest-api/)를 사용
+  * param은 url자체이니 들어온다면 반드시 있다.
+  * CarRouter.delete('/:id([0-9]+)',  CarController.instance.delete); // id에 abc를 넣으면 404로 빠진다
+- install  
+  * npm install body-parser --save
+  * npm install express-validator  --save
 
 ## logging
  - winston + morgan
@@ -180,3 +188,20 @@ import * as currency from '...';
 lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
 s = status -s
 ```
+
+## client 오는 데이터들
+
+1. req.query
+  - http://a.com/topic?id=1&name=siwa
+2. req.params
+  - app.get('/tweeter/:name',...
+  - req.params.name
+3. req.body
+```html
+  <form>
+  <input name=”username” …/>
+  ...
+  </form>
+```
+  - req.body.username  
+  - [vscode rest api](https://hudi.blog/vscode-rest-client/) 를 사용 해서 테스트
