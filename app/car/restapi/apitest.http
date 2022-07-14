@@ -3,22 +3,22 @@
 ###
 
 GET {{baseUrl}}/car/abc
-Content-Type: : application/json
+Content-Type:  application/json
 
 ###
 
 GET {{baseUrl}}/car/3
-Content-Type: : "application/json"
+Content-Type:  application/json
 
 ###
 
 GET {{baseUrl}}/car/list
-Content-Type: : application/json
+Content-Type:  application/json
 
-### insert car
+### POST insert car
 
 POST {{baseUrl}}/car
-Content-Type: : "application/json; charset=UTF-8"
+Content-Type:  application/json
 
 {
     "id": 1,
@@ -26,8 +26,8 @@ Content-Type: : "application/json; charset=UTF-8"
 }
 
 ### update car
-PATCH http://localhost:5000/car
-Content-Type: : "application/json; charset=UTF-8"
+PATCH http://localhost:5000/car/1
+Content-Type:  application/json; charset=UTF-8
 
 {
     "id" : 1,

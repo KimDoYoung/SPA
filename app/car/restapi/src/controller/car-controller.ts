@@ -4,6 +4,7 @@ import { SqlParams, ControllerBase } from '../types'
 import {logger} from '../config'
 import assert from 'assert'
 
+
 export default class CarController extends ControllerBase {
     private static _instance: CarController
     private constructor(){
@@ -37,18 +38,24 @@ export default class CarController extends ControllerBase {
         // throw new Error('new EEEEEEE')
     }
     public insert(req: Request, res: Response , next: NextFunction){
-        assert(req.body, ' body is not exist')
-        assert(req.body.ymd, 'ymd is null')
+        let validCheck = super.validationCheck(req, 'car-insert');
+        if(validCheck.pass == false){
+            res.status(400).json(super.fail('01', validCheck.message))
+            return
+        }
+
         logger.info('ymd:' + req.body.ymd)
-        let resultData = {'ymd': '111'}
+        let ymd = req.body.ymd
+        let resultData = {'ymd': ymd}
         res.status(200).json(super.success(resultData))
     }
     public update(req: Request, res: Response , next: NextFunction){
         console.log(req.body);
         logger.debug('/car/1 ... update')
-        logger.debug('id:' + req.body.id)
+        logger.debug('id:' + req.params.id)
         logger.debug('ymd:' + req.body.ymd)
-        let resultData = {'ymd': '111'}
+        let ymd = req.body.ymd
+        let resultData = {'ymd': ymd}
         res.status(200).json(super.success(resultData))
     }
     public delete(req: Request, res: Response , next: NextFunction){

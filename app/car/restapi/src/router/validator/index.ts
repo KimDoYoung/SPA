@@ -1,1 +1,1 @@
-export { default as carInsertValidation } from './car-validator'
+export { default as CarInsertValidation } from './car-validator'

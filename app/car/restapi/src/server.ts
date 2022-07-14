@@ -24,22 +24,22 @@ export default class Server {
         // this.app.use( express.json() )
         // this.app.use( express.urlencoded({ extended: true }) )
         this.app.use( morganMiddleware )
-        this.app.use( bodyParser.json());
+        this.app.use( bodyParser.json())
         this.app.use( bodyParser.urlencoded({ extended: true }))
     }
     private setupRouter(){
         //car router
         this.app.use('/car', CarRouter);
 
-        // 기본경로나 /user말고 다른곳 진입했을경우 실행
+        // 404 : 경로가 없을 때
         this.app.use((req: Request, res: Response, next: NextFunction) => { 
             const result = {
                 resultCode: '01',
                 resultMessage: 'Not Found',
                 timestamp : new Date().getTime()
             }
-            res.status(404).json( result );
-        });        
+            res.status(404).json( result )
+        })
         // Error handling
         this.app.use((err: any, req: Request, res: Response, next: NextFunction) => { 
             logger.error("*********************************")

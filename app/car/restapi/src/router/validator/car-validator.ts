@@ -1,15 +1,15 @@
 import { check, body } from 'express-validator';
-const carInsertValidation = [
+const CarInsertValidation = [
     check('ymd', '발생일은 필수입니다').not().isEmpty(),
     check('event_cd', 'event코드는  필수입니다').not().isEmpty(),
     check('event_nm', 'event명은  필수입니다').not().isEmpty(),
     body('age').isInt().withMessage('숫자를 입력해!'),
 ]
-export default carInsertValidation
+export default CarInsertValidation
 
-// create table if not exists car (
-//     id int primary key auto_increment comment 'id',
-//     ymd varchar(8) not null comment '발생일',
+//  create table if not exists car (
+//  id int primary key auto_increment comment 'id',
+//  ymd varchar(8) not null comment '발생일',
 // 	event_cd char(1) not null comment '1:주유,2:정비,9:기타',
 // 	event_nm varchar(50) not null comment '이벤트명',
 // 	km int null comment '주행거리',
