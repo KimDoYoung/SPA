@@ -5,12 +5,12 @@
 GET {{baseUrl}}/car/abc
 Content-Type:  application/json
 
-###
+### get
 
 GET {{baseUrl}}/car/3
 Content-Type:  application/json
 
-###
+### LIST
 
 GET {{baseUrl}}/car/list
 Content-Type:  application/json

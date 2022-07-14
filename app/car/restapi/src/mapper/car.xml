@@ -37,7 +37,12 @@
         AND ymd <![CDATA[ <= ]]>  #{toYmd}
       </if>
   </sql>
-  
+  <select id="get">
+    select 
+      *
+    from car
+    where id = ${id}
+  </select>
   <insert id="insert" >
   INSERT INTO technote
   (
