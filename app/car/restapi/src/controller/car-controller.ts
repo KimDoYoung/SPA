@@ -1,7 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { Service } from '../service';
-import { SqlParams, ControllerBase } from '../types'
+import { SqlParams } from '../types'
 import {logger} from '../config'
+import ControllerBase  from './controllerbase';
 import assert from 'assert'
 
 
@@ -14,8 +15,20 @@ export default class CarController extends ControllerBase {
     public static get instance():CarController {
         return this._instance || (this._instance = new this())
     }
-
+    public async test(req: Request, res: Response , next: NextFunction){
+        let conn;
+        try {            
+            conn = Service.instance.getConnection()
+            let res1 = (await conn).query('select 1 ')
+            let res2 = (await conn).query('select 2 ')
+        } catch (error) {
+            throw error
+        }finally{
+            if(conn) (await conn).end()
+        }
+    }
     public list(req: Request, res: Response , next: NextFunction){
+
         
         logger.debug('/car/list... ')
 

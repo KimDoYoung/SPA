@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { logger } from '../config';
-import  SqlParams from './sqlparams'
+import  SqlParams from '../types/sqlparams'
 import { Service } from '../service';
 
 export default abstract class ControllerBase {

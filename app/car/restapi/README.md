@@ -207,12 +207,30 @@ s = status -s
   - [vscode rest api](https://hudi.blog/vscode-rest-client/) 를 사용 해서 테스트
 
 
-  ## controller작성법
+## controller작성법
 
   1. 1개의 sql문장 수행하고 결과를 보내기
   2. 여러개의 sql문장을 수행하고 결과를 보내기
   3. 순차적으로 수행하면서 각 문장의 수행결과를 보면서 결과를 보내기
   4. 트랜잭션처리하기.
 
+## 수정하자
+
+1. ControllerBase에서 db관련 함수를 없애자
+2. MariDB class 삭제 -> Service로 넣자.
+3. mariadb transaction알아볼 것
+4. deploy하는 방법
+
+## jwt
+- JSON Web Token : 인증에 필요한 정보를 암호화 시킨 JSON
+- json 포맷
+- jwt를 헤더에 담아서 전송
+- client에서는 static변수와 local storage에 담아서 보관
+- logout 시 black list에 저장
+- header + payload + signature
+- header : 타입과 알고리즘
+- payload : json 쌍 : token발급자등.
+- signature : head와 payload의 암호화
+- http header에 authorization값으로 넣는다.
 
 

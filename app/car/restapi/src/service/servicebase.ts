@@ -1,13 +1,13 @@
 import path from 'path'
 import fs from 'fs'
 import mybatisMapper from 'mybatis-mapper';
-import SqlParams from './sqlparams'
+import SqlParams from '../types/sqlparams'
 import {logger} from '../config'
 interface SqlId {
     namespace : string,
     id : string
 }
-class ServiceBase {
+abstract class ServiceBase {
     private mapperFolder = '../mapper'
     
     constructor(){

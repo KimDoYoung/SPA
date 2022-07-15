@@ -1,7 +1,8 @@
 import mariadb from 'mariadb'
 // import { MariaDB } from '../database';
-import { SqlParams, ServiceBase } from '../types'
+import { SqlParams } from '../types'
 import { logger, config } from '../config';
+import ServiceBase from './servicebase'
 
 export default class Service extends ServiceBase{
     private static _instance: Service
