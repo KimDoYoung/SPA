@@ -58,7 +58,7 @@ export default abstract class ControllerBase {
         .then( resultData => {
             logger.debug(resultData);
             let result = {
-                resultCode: '00',
+                resultCode: '200',
                 resultMessage: 'OK',
                 data : resultData,
                 timestamp : new Date().getTime()
@@ -69,7 +69,7 @@ export default abstract class ControllerBase {
             let errorMessage = new String(error)
             logger.error('[' + errorMessage + ']')
             let result = {
-                resultCode: '99',
+                resultCode: '500',
                 resultMessage: errorMessage,
                 timestamp : new Date().getTime()
             }

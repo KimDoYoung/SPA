@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { Service } from '../service';
-import { SqlParams } from '../types'
+import { SqlParams, ResMessage } from '../types'
 import {logger} from '../config'
 import ControllerBase  from './controllerbase';
 import assert from 'assert'
@@ -63,12 +63,10 @@ export default class CarController extends ControllerBase {
     public insert(req: Request, res: Response , next: NextFunction){
         let validCheck = super.validationCheck(req, 'car-insert');
         if(validCheck.pass == false){
-            res.status(400).json(super.fail('01', validCheck.message))
+            // res.status(400).json(super.fail('500', validCheck.message))
+            res.status(400).json( ResMessage.fail(400, validCheck.message) )
             return
         }
-
-
-        logger.info('ymd:' + req.body.ymd)
         let ymd = req.body.ymd
         let resultData = {'ymd': ymd}
         res.status(200).json(super.success(resultData))
@@ -91,7 +89,7 @@ export default class CarController extends ControllerBase {
         Service.instance.execute('car.list', sqlParams)
         .then((resultData)=>{
             logger.debug(resultData);
-            res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
+            res.status(200).json({resultCode:'200', resultMessage: 'OK', data : resultData})
             //res.status(200).json(super.success(resultData))
         })
         .catch((error)=>{

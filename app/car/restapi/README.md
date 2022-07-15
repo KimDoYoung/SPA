@@ -214,6 +214,22 @@ s = status -s
   3. 순차적으로 수행하면서 각 문장의 수행결과를 보면서 결과를 보내기
   4. 트랜잭션처리하기.
 
+## .devlopment.env and .producton.env
+```
+# -----------------------------------
+# maria database 
+# -----------------------------------
+MARIA_HOST=
+MARIA_PORT=3306
+MARIA_USER=
+MARIA_PASSWORD=
+MARIA_DATABASE=
+# -----------------------------------
+# nodejs server port 
+# -----------------------------------
+SERVER_PORT=5000
+```
+
 ## 수정하자
 
 1. ControllerBase에서 db관련 함수를 없애자
@@ -232,5 +248,8 @@ s = status -s
 - payload : json 쌍 : token발급자등.
 - signature : head와 payload의 암호화
 - http header에 authorization값으로 넣는다.
-
-
+- [typescript에서 Service](https://blog.pumpkin-raccoon.com/112)
+  * req.userId를 쓰기 위해서 tsconfig에 작업을 해야한다?
+  
+- npm install jsonwebtoken
+- npm install --save @types/jsonwebtoken

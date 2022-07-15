@@ -34,7 +34,7 @@ export default class Server {
         // 404 : 경로가 없을 때
         this.app.use((req: Request, res: Response, next: NextFunction) => { 
             const result = {
-                resultCode: '01',
+                resultCode: '404',
                 resultMessage: 'Not Found',
                 timestamp : new Date().getTime()
             }
@@ -49,7 +49,7 @@ export default class Server {
             err.message = err.message || "Internal Server Error";
             
             const result = {
-                resultCode: '99',
+                resultCode: '500',
                 resultMessage: err.message,
                 timestamp : new Date().getTime()
             }
