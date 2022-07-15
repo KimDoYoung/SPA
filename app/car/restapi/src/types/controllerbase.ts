@@ -24,7 +24,7 @@ export default abstract class ControllerBase {
     //         resultCode : code, resultMessage: message, timestamp: new Date().getTime()
     //     }
     // }
-    public success(data: object,message: string='OK') {
+    public success(data: object, message: string='OK') {
         return {
             resultCode: '00', resultMessage: 'OK', 
             timestamp: new Date().getTime(),
@@ -43,15 +43,27 @@ export default abstract class ControllerBase {
         }
         return result;
     }
-    public executePromise = (sqlId: string, sqlParams: SqlParams)=>{
-        return  Service.instance.execute('car.list', sqlParams);
+    public  execute(sqlId: string, sqlParams: SqlParams){
+        return  Service.instance.execute(sqlId, sqlParams);
     }
-    public execute(sqlId: string, sqlParams: SqlParams, res: Response){
+    /**
+     * 1개의 sqlId를 수행하고 결과를 리턴할 때
+     * @param sqlId 
+     * @param sqlParams 
+     * @param res 
+     */
+    public executeAndDone(sqlId: string, sqlParams: SqlParams, res: Response){
         // this.executePromise(sqlId, sqlParams)
         Service.instance.execute(sqlId, sqlParams)
         .then( resultData => {
             logger.debug(resultData);
-            res.status(200).json(this.success(resultData))
+            let result = {
+                resultCode: '00',
+                resultMessage: 'OK',
+                data : resultData,
+                timestamp : new Date().getTime()
+            }
+            res.status(200).json(this.success(result))
         })
         .catch( error => {
             let errorMessage = new String(error)

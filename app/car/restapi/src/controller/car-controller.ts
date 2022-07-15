@@ -20,7 +20,7 @@ export default class CarController extends ControllerBase {
         logger.debug('/car/list... ')
 
         let sqlParams: SqlParams = {'fromYmd':'20220101'}
-        super.execute('car.list', sqlParams, res)
+        super.executeAndDone('car.list', sqlParams, res)
         
 
         // Service.instance.execute('car.list', sqlParams)
@@ -41,7 +41,7 @@ export default class CarController extends ControllerBase {
         let id = req.params.id;
         logger.debug('id:' + id)
         let sqlParams: SqlParams = {'id': id}
-        super.execute('car.get', sqlParams, res)
+        super.executeAndDone('car.get', sqlParams, res)
         
         // let resultData = {'id': req.params.id}
         // res.status(200).json(super.success(resultData))
@@ -61,13 +61,16 @@ export default class CarController extends ControllerBase {
         res.status(200).json(super.success(resultData))
     }
     public update(req: Request, res: Response , next: NextFunction){
-        console.log(req.body);
-        logger.debug('/car/1 ... update')
-        logger.debug('id:' + req.params.id)
-        logger.debug('ymd:' + req.body.ymd)
-        let ymd = req.body.ymd
-        let resultData = {'ymd': ymd}
-        res.status(200).json(super.success(resultData))
+
+         super.execute('test.test', {})
+         .then((data)=>{
+            console.log('1:' + data)
+            super.execute('test.test', {})
+            .then(data=>console.log(data))
+         })
+         .catch(error=>console.log(error))
+
+         
     }
     public delete(req: Request, res: Response , next: NextFunction){
         let id = req.params.id;
@@ -75,8 +78,8 @@ export default class CarController extends ControllerBase {
         Service.instance.execute('car.list', sqlParams)
         .then((resultData)=>{
             logger.debug(resultData);
-            // res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
-            res.status(200).json(super.success(resultData))
+            res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
+            //res.status(200).json(super.success(resultData))
         })
         .catch((error)=>{
             let e = new String(error)

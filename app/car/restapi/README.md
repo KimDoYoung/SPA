@@ -205,3 +205,14 @@ s = status -s
 ```
   - req.body.username  
   - [vscode rest api](https://hudi.blog/vscode-rest-client/) 를 사용 해서 테스트
+
+
+  ## controller작성법
+
+  1. 1개의 sql문장 수행하고 결과를 보내기
+  2. 여러개의 sql문장을 수행하고 결과를 보내기
+  3. 순차적으로 수행하면서 각 문장의 수행결과를 보면서 결과를 보내기
+  4. 트랜잭션처리하기.
+
+
+
