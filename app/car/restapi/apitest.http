@@ -15,6 +15,12 @@ Content-Type:  application/json
 GET {{baseUrl}}/car/list
 Content-Type:  application/json
 
+{
+    "searchKey" : "",
+    "pageNo"    : 1,
+    "pageSize"  : 10
+}
+
 ### POST insert car
 
 POST {{baseUrl}}/car

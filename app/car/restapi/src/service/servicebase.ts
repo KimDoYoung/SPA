@@ -14,7 +14,7 @@ abstract class ServiceBase {
         this.loadingXml()
     }
 
-    protected parseSqlId(sqlIdString : string ): SqlId {
+    public parseSqlId(sqlIdString : string ): SqlId {
         let array:string[] = sqlIdString.split('.')
         let sqlId: SqlId = {namespace:array[0], id: array[1]}
         return sqlId
@@ -29,7 +29,7 @@ abstract class ServiceBase {
         logger.info(xmlFiles)
         mybatisMapper.createMapper( xmlFiles );
     }
-    protected getSqlStatement(sqlIdStr: string, sqlParams: SqlParams): string {
+    public getSqlStatement(sqlIdStr: string, sqlParams: SqlParams): string {
         let sqlId = this.parseSqlId(sqlIdStr)
         let namespace = sqlId.namespace
         let id = sqlId.id

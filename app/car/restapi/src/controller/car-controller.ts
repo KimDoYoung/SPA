@@ -27,27 +27,32 @@ export default class CarController extends ControllerBase {
             if(conn) (await conn).end()
         }
     }
-    public list(req: Request, res: Response , next: NextFunction){
+    public async list(req: Request, res: Response , next: NextFunction){
+        let conn
+        try {
+            let { searchKey, pageNo, pageSize } = req.body;
+            let sqlParams: SqlParams = {}
+            sqlParams.searchKey = searchKey;
+            sqlParams.pageSize = pageSize || process.env.pageSize;
+            sqlParams.startIndex = (pageNo-1)*sqlParams.pageSize;
 
-        
-        logger.debug('/car/list... ')
+            conn = await Service.instance.getConnection()
+            let sql1 = Service.instance.getSqlStatement('car.list-count', sqlParams)
+            let sql2 = Service.instance.getSqlStatement('car.list', sqlParams)
+            logger.debug('sql1:' + sql1)
+            logger.debug('sql2:' + sql2)
+            const res1 = await conn.query(sql1)
+            const res2 = await conn.query(sql2)
+            console.log(res1[0].totalCount)
+            console.log(res2)
+            // logger.debug(res1)
+            // logger.debug(res2)
+        } catch (error) {
+            throw error
+        } finally{
+            if(conn) (await conn).end()
+        }
 
-        let sqlParams: SqlParams = {'fromYmd':'20220101'}
-        super.executeAndDone('car.list', sqlParams, res)
-        
-
-        // Service.instance.execute('car.list', sqlParams)
-        // .then((resultData)=>{
-        //     logger.debug(resultData);
-        //     // res.status(200).json({resultCode:'00', resultMessage: 'OK', data : resultData})
-        //     res.status(200).json(super.success(resultData))
-        // })
-        // .catch((error)=>{
-        //     let e = new String(error)
-        //     logger.debug('[' + e + ']')
-        //     // res.status(500).json({resultCode:'99', resultMessage: 'unknown error', timestamp: new Date().getTime() })
-        //     res.status(500).json(super.fail())
-        // })
     }
     public get(req: Request, res: Response , next: NextFunction){
         logger.debug('get /car/id')
@@ -55,21 +60,16 @@ export default class CarController extends ControllerBase {
         logger.debug('id:' + id)
         let sqlParams: SqlParams = {'id': id}
         super.executeAndDone('car.get', sqlParams, res)
-        
-        // let resultData = {'id': req.params.id}
-        // res.status(200).json(super.success(resultData))
-        // throw new Error('new EEEEEEE')
     }
     public insert(req: Request, res: Response , next: NextFunction){
         let validCheck = super.validationCheck(req, 'car-insert');
         if(validCheck.pass == false){
-            // res.status(400).json(super.fail('500', validCheck.message))
             res.status(400).json( ResMessage.fail(400, validCheck.message) )
             return
         }
         let ymd = req.body.ymd
         let resultData = {'ymd': ymd}
-        res.status(200).json(super.success(resultData))
+        res.status(200).json(ResMessage.success('OK', resultData))
     }
     public update(req: Request, res: Response , next: NextFunction){
 
@@ -89,14 +89,11 @@ export default class CarController extends ControllerBase {
         Service.instance.execute('car.list', sqlParams)
         .then((resultData)=>{
             logger.debug(resultData);
-            res.status(200).json({resultCode:'200', resultMessage: 'OK', data : resultData})
-            //res.status(200).json(super.success(resultData))
+            res.status(200).json(ResMessage.success('OK', resultData))
         })
         .catch((error)=>{
-            let e = new String(error)
-            logger.debug('[' + e + ']')
-            // res.status(500).json({resultCode:'99', resultMessage: 'unknown error', timestamp: new Date().getTime() })
-            res.status(500).json(super.fail())
+            logger.debug('[' + error + ']')
+            res.status(500).json(ResMessage.fail(500, error))
         })
     }
 }

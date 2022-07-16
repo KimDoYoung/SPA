@@ -27,7 +27,8 @@
     WHERE 1=1    
       <include refid='list-where'/>
     ORDER BY
-        upd_dt DESC    
+        upd_dt DESC
+    LIMIT ${startIndex}, ${pageSize}
   </select>
   <sql id='list-where'>
       <if test="fromYmd != null and fromYmd != ''">

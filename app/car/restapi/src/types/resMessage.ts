@@ -1,8 +1,8 @@
-export default class Messsage {
+export default class ResMesssage {
     constructor(){
 
     }
-    static success(message: number, data: any ){
+    static success(message: string, data: any ){
         return {
             resultCode : 200,
             resultMessage : message,
