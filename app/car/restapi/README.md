@@ -253,3 +253,9 @@ SERVER_PORT=5000
   
 - npm install jsonwebtoken
 - npm install --save @types/jsonwebtoken
+
+## 순서
+
+1. router
+2. controller
+3. valid
