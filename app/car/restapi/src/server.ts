@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction} from 'express';
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import {CarRouter} from './router'
+import {CarRouter, UserRouter} from './router'
 import {logger, morganMiddleware} from './config'
 
 export default class Server {
@@ -30,9 +30,11 @@ export default class Server {
     private setupRouter(){
         //car router
         this.app.use('/car', CarRouter);
+        this.app.use('/user', UserRouter);
 
         // 404 : 경로가 없을 때
         this.app.use((req: Request, res: Response, next: NextFunction) => { 
+            logger.warn(`${req.url} not defined, router not defined!!!`)
             const result = {
                 resultCode: '404',
                 resultMessage: 'Not Found',

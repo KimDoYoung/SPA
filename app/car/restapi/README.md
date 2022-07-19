@@ -113,6 +113,14 @@ dotenv.config({
 > "type":"module"을 지운다.
 > typescript로 하면 그냥 import/export를 쓰면 되는 듯.
 
+- typescript에서 json을 import하기 위해서는 작업이 필요
+  [tsconfig.js](https://gracefullight.dev/2019/11/26/import-json-with-typescript-ts5071/)
+```
+ "compilerOptions": {
+        "resolveJsonModule" : true,
+    }
+```
+
 ## singleton 기법
 ```javascript
 class Simple {
@@ -188,6 +196,8 @@ import * as currency from '...';
 lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
 s = status -s
 ```
+- git branch -a, -r 
+- git checout br명
 
 ## client 오는 데이터들
 
@@ -219,15 +229,16 @@ s = status -s
 # -----------------------------------
 # maria database 
 # -----------------------------------
-MARIA_HOST=
+MARIA_HOST=kalpa.iptime.org
 MARIA_PORT=3306
-MARIA_USER=
-MARIA_PASSWORD=
-MARIA_DATABASE=
+MARIA_USER=kdy987
+MARIA_PASSWORD=kalpa987
+MARIA_DATABASE=kalpadb
 # -----------------------------------
 # nodejs server port 
 # -----------------------------------
 SERVER_PORT=5000
+JWT_SECRET_KEY=abc123
 ```
 
 ## 수정하자

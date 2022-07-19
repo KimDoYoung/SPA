@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:5000
+
+###
+
+GET {{baseUrl}}/user/abc
+Content-Type:  application/json
+
+### get
+
+GET {{baseUrl}}/user/kdy
+Content-Type:  application/json
+
+### LIST
+
+GET {{baseUrl}}/user/list
+Content-Type:  application/json
+
+{
+    "searchKey" : "",
+    "pageNo"    : 1,
+    "pageSize"  : 10
+}
+
+### POST insert user
+
+POST {{baseUrl}}/user
+Content-Type:  application/json
+
+{
+   "user_id": "Park",
+   "user_pw": "1234",
+   "nm": "박길동"
+}
+
+### update user
+PATCH {{baseUrl}}/user/kdy
+Content-Type:  application/json; charset=UTF-8
+
+{
+   "user_pw": "1234",
+   "nm": "홍길동"
+}
+
+### Delete
+DELETE {{baseUrl}}/user/kdy
+Content-Type:  application/json; charset=UTF-8

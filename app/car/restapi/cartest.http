@@ -7,7 +7,7 @@ Content-Type:  application/json
 
 ### get
 
-GET {{baseUrl}}/car/3
+GET {{baseUrl}}/car/2
 Content-Type:  application/json
 
 ### LIST
@@ -27,15 +27,21 @@ POST {{baseUrl}}/car
 Content-Type:  application/json
 
 {
-    "id": 1,
-   "ymd": "12345"
+   "ymd": "20220701",
+   "event_cd": "3",
+   "event_nm": "테스팅1"
 }
 
 ### update car
-PATCH http://localhost:5000/car/1
+PATCH {{baseUrl}}/car/1
 Content-Type:  application/json; charset=UTF-8
 
 {
-    "id" : 1,
-   "ymd": "9999999"
+   "ymd": "20220701",
+   "event_cd": "3",
+   "event_nm": "테스팅1111"
 }
+
+### Delete
+DELETE {{baseUrl}}/car/1
+Content-Type:  application/json; charset=UTF-8

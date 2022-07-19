@@ -3,7 +3,6 @@ const CarInsertValidation = [
     check('ymd', '발생일은 필수입니다').not().isEmpty(),
     check('event_cd', 'event코드는  필수입니다').not().isEmpty(),
     check('event_nm', 'event명은  필수입니다').not().isEmpty(),
-    body('age').isInt().withMessage('숫자를 입력해!'),
 ]
 export default CarInsertValidation
 

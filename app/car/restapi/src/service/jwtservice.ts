@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { logger, config } from '../config'
 import { User } from '../types'
 export default class JwtService{
-    static getUserIdFromRequest = ( req: Request): string | null {
+    static getUserIdFromRequest = ( req: Request ): string | null => {
         const token = this.extractTokenFromRequest(req)
         if(!token){
             return null
@@ -11,7 +11,7 @@ export default class JwtService{
         const jwtPayload = this.decodeJWT(token)
         return (jwtPayload as any)?._id || null
     }
-    static extractTokenFromRequest = ( req: Request): string | undefined {
+    static extractTokenFromRequest = ( req: Request): string | undefined => {
         const TOKEN_PREFIX = 'Bearer '
         const auth = req.headers.authorization
         const token = auth?.includes(TOKEN_PREFIX)

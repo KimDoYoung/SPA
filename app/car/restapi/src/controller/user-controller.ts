@@ -25,8 +25,8 @@ export default class UserController extends ControllerBase {
             sqlParams.startIndex = (pageNo-1)*sqlParams.pageSize;
 
             conn = await Service.instance.getConnection()
-            let sql1 = Service.instance.getSqlStatement('car.list-count', sqlParams)
-            let sql2 = Service.instance.getSqlStatement('car.list', sqlParams)
+            let sql1 = Service.instance.getSqlStatement('user.list-count', sqlParams)
+            let sql2 = Service.instance.getSqlStatement('user.list', sqlParams)
             logger.debug('sql1:' + sql1)
             logger.debug('sql2:' + sql2)
             const res1 = await conn.query(sql1)
@@ -47,7 +47,7 @@ export default class UserController extends ControllerBase {
         let id = req.params.id;
         logger.debug('id:' + id)
         let sqlParams: SqlParams = {'id': id}
-        super.executeAndDone('car.get', sqlParams, res)
+        super.executeAndDone('user.get', sqlParams, res)
     }
     public insert(req: Request, res: Response , next: NextFunction){
         let validCheck = super.validationCheck(req, 'car-insert');
@@ -73,8 +73,7 @@ export default class UserController extends ControllerBase {
     }
     public delete(req: Request, res: Response , next: NextFunction){
         let id = req.params.id;
-        let sqlParams: SqlParams = {'id': id}
-        Service.instance.execute('car.list', sqlParams)
+        Service.instance.execute('user.delete', {'id': id})
         .then((resultData)=>{
             logger.debug(resultData);
             res.status(200).json(ResMessage.success('OK', resultData))
