@@ -239,6 +239,8 @@ MARIA_DATABASE=kalpadb
 # -----------------------------------
 SERVER_PORT=5000
 JWT_SECRET_KEY=abc123
+FILE_BASE_FOLDER=c:/Users/apro/Documents/work/files
+
 ```
 
 ## 수정하자
@@ -270,3 +272,19 @@ JWT_SECRET_KEY=abc123
 1. router
 2. controller
 3. valid
+
+## upload & downloadfile
+
+- multer를 사용
+  * npm install --save multer
+  * npm install --save-dev @types/multer
+- router의 middleware로 적용
+```javascript 
+  router.post('/upload',upload.array('uploadFiles', 12), file.upload);
+```
+- express static을 사용 file에 접근 가능
+  * app.use('/users', express.static('uploads'));
+   - localhost:5000/users/a.png
+- download는 express가 download를 가지고 있다.
+  * [샘플](https://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express)
+  * [멀티파일& filter](https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer)

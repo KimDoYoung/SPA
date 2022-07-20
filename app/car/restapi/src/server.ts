@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction} from 'express';
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import {CarRouter, UserRouter} from './router'
+import {CarRouter, UserRouter, FileRouter} from './router'
 import {logger, morganMiddleware} from './config'
 
 export default class Server {
@@ -31,6 +31,7 @@ export default class Server {
         //car router
         this.app.use('/car', CarRouter);
         this.app.use('/user', UserRouter);
+        this.app.use('/file', FileRouter);
 
         // 404 : 경로가 없을 때
         this.app.use((req: Request, res: Response, next: NextFunction) => { 
@@ -49,7 +50,7 @@ export default class Server {
             logger.error("*********************************")
             err.statusCode = err.statusCode || 500;
             err.message = err.message || "Internal Server Error";
-            
+            logger.error("ERROR : " + err.message)
             const result = {
                 resultCode: '500',
                 resultMessage: err.message,

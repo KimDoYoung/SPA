@@ -13,7 +13,6 @@ export default class CarController extends ControllerBase {
     private constructor(){
         super()
         this.carList = CarData
-        console.log("CarList:" + CarData)
         logger.debug('CarController intialize...')        
     }
     public static get instance():CarController {

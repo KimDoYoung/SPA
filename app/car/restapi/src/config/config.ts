@@ -20,7 +20,8 @@ const config = {
         connectionLimit : 5
     },
     pageSize : 10,
-    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY
+    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+    FILE_BASE_FOLDER:process.env.FILE_BASE_FOLDER
 };
 
 export default config;

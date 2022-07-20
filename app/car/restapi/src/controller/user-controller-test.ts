@@ -12,10 +12,9 @@ export default class UserController extends ControllerBase {
     private constructor(){
         super()
         this.userList = UserData
-        console.log("UserData:" + UserData)
         logger.debug('UserController intialize...')        
     }
-    public static get instance():UserController {
+    public static get instance(): UserController {
         return this._instance || (this._instance = new this())
     }
     public async list(req: Request, res: Response , next: NextFunction){
