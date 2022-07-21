@@ -2,6 +2,7 @@ import { Request } from 'express'
 import jwt from 'jsonwebtoken'
 import { logger, config } from '../config'
 import { User } from '../types'
+
 export default class JwtService{
     static getUserIdFromRequest = ( req: Request ): string | null => {
         const token = this.extractTokenFromRequest(req)
@@ -9,7 +10,7 @@ export default class JwtService{
             return null
         }
         const jwtPayload = this.decodeJWT(token)
-        return (jwtPayload as any)?._id || null
+        return (jwtPayload as any)?.user_id || null
     }
     static extractTokenFromRequest = ( req: Request): string | undefined => {
         const TOKEN_PREFIX = 'Bearer '
@@ -29,7 +30,7 @@ export default class JwtService{
     }
     static createJWT = async (user: User): Promise<string> =>{
         const token = jwt.sign(
-            { _id: user._id},
+            { user_id: user.user_id, user_nm: user.user_nm},
             config.JWT_SECRET_KEY!
         );
         return token

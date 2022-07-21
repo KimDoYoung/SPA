@@ -4,11 +4,11 @@ import { SqlParams, ResMessage } from '../types'
 import {logger} from '../config'
 import ControllerBase  from './controllerbase'
 import assert from 'assert'
-import { UserData, User} from '../data'
+import { UserData,  UserType} from '../data'
 
 export default class UserController extends ControllerBase {
     private static _instance: UserController
-    private userList: Array<User>
+    private userList: Array<UserType>
     private constructor(){
         super()
         this.userList = UserData

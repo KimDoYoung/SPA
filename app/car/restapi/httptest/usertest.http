@@ -44,3 +44,26 @@ Content-Type:  application/json; charset=UTF-8
 ### Delete
 DELETE {{baseUrl}}/user/kdy
 Content-Type:  application/json; charset=UTF-8
+
+
+### user login ok
+
+POST {{baseUrl}}/user/login
+Content-Type:  application/json
+
+{
+   "user_id": "kdy",
+   "user_pw": "a"
+}
+
+
+### user login fail
+
+POST {{baseUrl}}/user/login
+Content-Type:  application/json
+
+{
+   "user_id": "aaa",
+   "user_pw": "a"
+}
+

@@ -2,4 +2,4 @@
 // export { default as Car } from './car-data'
 
 export { Car, CarData } from './car-data'
-export { User, UserData } from './user-data'
+export { UserType, UserData } from './user-data'

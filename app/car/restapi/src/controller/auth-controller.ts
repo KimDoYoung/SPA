@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { logger } from '../config'
-import { ResMessage } from '../types';
+import { ResMessage, User } from '../types';
 import { JwtService } from '../service';
-import { UserData, User} from '../data'
+import { UserType, UserData} from '../data'
 import assert from 'assert'
 
 export default class AuthController{
@@ -14,8 +14,23 @@ export default class AuthController{
     public static get instance(): AuthController {
         return this._instance || (this._instance = new this())
     }
-    public login(req: Request, res: Response , next: NextFunction){
-        res.status(200).json(ResMessage.success('OK',{message: 'single file upload OK'}))
+    public async login(req: Request, res: Response , next: NextFunction){
+        logger.debug('/user/login #################')
+        let id = req.body.user_id
+        let pw = req.body.user_pw
+        let found = UserData.find(user => user.user_id === id)
+        if(found){
+            let user: User = new User(id, found.nm)
+            let token: string = ''
+            token = await JwtService.createJWT(user)
+            logger.info('token: ' + token)
+            let decodedToken = JwtService.decodeJWT(token)
+            console.log('decodedtoken: ' , decodedToken)
+            res.status(200).json(ResMessage.success('OK',{token: token}))
+        }else{
+            logger.debug(id + ' not found')
+            res.status(403).json(ResMessage.fail(403, 'user auth fail'))
+        }
     }
     public logout(req: Request, res: Response , next: NextFunction){
         res.status(200).json(ResMessage.success('OK',{message: 'single file upload OK'}))

@@ -120,6 +120,8 @@ dotenv.config({
         "resolveJsonModule" : true,
     }
 ```
+- typeRoots가 안 먹음. 즉  express.d.ts가 동작안함
+  *  [package.json에서 해결](https://techbless.github.io/2020/03/12/ts-node%EC%97%90%EC%84%9C-typeRoots-%EC%84%A4%EC%A0%95%EC%9D%B4-%EC%9E%91%EB%8F%99%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0/)
 
 ## singleton 기법
 ```javascript
@@ -267,6 +269,9 @@ FILE_BASE_FOLDER=c:/Users/apro/Documents/work/files
 - npm install jsonwebtoken
 - npm install --save @types/jsonwebtoken
 
+- access token과 refresh token은 뭘까? 보안때문에 한다고 하는데...
+- [middleware](https://charming-kyu.tistory.com/4)
+
 ## 순서
 
 1. router
@@ -288,3 +293,23 @@ FILE_BASE_FOLDER=c:/Users/apro/Documents/work/files
 - download는 express가 download를 가지고 있다.
   * [샘플](https://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express)
   * [멀티파일& filter](https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer)
+
+##  표현
+1. promise<string>을 리턴한다.
+```javascript
+static createJWT = async (user: User): Promise<string> =>{
+        const token = jwt.sign(
+            { user_id: user.user_id, user_nm: user.user_nm},
+            config.JWT_SECRET_KEY!
+        );
+        return token
+    }
+```
+2. 뒤에 !붙이기
+```javascript
+jwt.verify(token, config.JWT_SECRET_KEY!)
+```
+3. 뒤에 물음표 붙이기
+```javascript
+ auth?.includes(TOKEN_PREFIX)
+```

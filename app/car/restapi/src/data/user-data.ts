@@ -1,4 +1,4 @@
-interface User {
+interface UserType {
     user_id: string,
     user_pw: string,
     nm: string
@@ -20,4 +20,4 @@ const UserData= [
         "nm" : "Go gil dong"
     }
 ];
-export  { UserData, User }
+export  { UserData, UserType }
