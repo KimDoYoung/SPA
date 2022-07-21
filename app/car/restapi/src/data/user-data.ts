@@ -6,7 +6,7 @@ interface UserType {
 const UserData= [
     {
         "user_id" : 'kdy',
-        "user_pw" : "1234",
+        "user_pw" : "$2b$10$u2znlOszkmQCqcJn0.pSzeDt0mSH0O0hp23TFxw487cebmO5oAV7O",
         "nm" : "Kim Do Young"
     },
     {

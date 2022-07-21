@@ -47,6 +47,10 @@ export default class FileController{
         
     }
     public download(req: Request, res: Response , next: NextFunction){
+        let id = req.params.id;
+        logger.debug('download file id : ' + id)
+        //let file = getFilePath(id)
+        //res.download(file)
         res.status(200).json(ResMessage.success('OK',{}))
     }
 }

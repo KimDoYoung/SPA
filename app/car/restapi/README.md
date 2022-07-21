@@ -4,15 +4,15 @@ car restapi
 ## 개요
 
 - 차계부
-- kalpadb사용
+- jskndb사용 (kalpa.ip..사용)
 - node로 restapi를 구성, mysql사용 express사용
 - nodemon도 설치하여 사용해 본다.
     - nodemon app.js
 - ES모듈의 사용 (import/export)
     - CommonJS를 모듈시스템으로 사용한 nodejs에서 서서히 ES모듈로 변화한다고 한다
 
-- typescript를 사용하자.
-- mariadb 연결
+- typescript를 사용.
+- mariadb 사용
 
 ## 참고
 
@@ -231,16 +231,23 @@ s = status -s
 # -----------------------------------
 # maria database 
 # -----------------------------------
-MARIA_HOST=kalpa.iptime.org
+MARIA_HOST=
 MARIA_PORT=3306
-MARIA_USER=kdy987
-MARIA_PASSWORD=kalpa987
+MARIA_USER=
+MARIA_PASSWORD=
 MARIA_DATABASE=kalpadb
 # -----------------------------------
 # nodejs server port 
 # -----------------------------------
 SERVER_PORT=5000
+# -----------------------------------
+# Jwt secure key
+# -----------------------------------
 JWT_SECRET_KEY=abc123
+#------------------------------------
+# file upload 
+#------------------------------------
+FILE_VIRTURL_NAME=/repo/upload
 FILE_BASE_FOLDER=c:/Users/apro/Documents/work/files
 
 ```
@@ -319,3 +326,18 @@ jwt.verify(token, config.JWT_SECRET_KEY!)
 ```javascript
  auth?.includes(TOKEN_PREFIX)
 ```
+
+## 암호화 
+- 패스워드같은 경우 암호화가 필요
+- Crypto vs Bcrypt
+- Crypto는 nodejs 내장
+- Bcrypt는 강력
+- npm install @types/bcrypt --save
+- import bcrypt from "bcrypt"
+
+## deploy (배포)
+
+1. restapi(backend) 는 nodejs에서 돈다.
+2. front(angularJS+tailwind) 는 nginx에서 돈다.
+3. restapi 를 서비스로 등록
+4. restapi 는 수정되었을때 git 으로 pull한 후에 다시 기동

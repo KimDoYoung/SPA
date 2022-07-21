@@ -5,6 +5,7 @@ import {logger} from '../config'
 import ControllerBase  from './controllerbase'
 import assert from 'assert'
 import { UserData,  UserType} from '../data'
+import bcrypt from 'bcrypt'
 
 export default class UserController extends ControllerBase {
     private static _instance: UserController
@@ -60,7 +61,7 @@ export default class UserController extends ControllerBase {
         let {user_pw, nm} = req.body
         let found=UserData.find(user=>user.user_id === id)
         if(found){
-            found.user_pw = user_pw
+            found.user_pw = bcrypt.hashSync(user_pw,10)
             found.nm = nm
             res.status(200).json(ResMessage.success('OK', {effectedRecordCount:1}))
         }else{

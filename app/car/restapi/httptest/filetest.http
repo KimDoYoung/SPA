@@ -12,6 +12,12 @@ Content-Type: image/png
 < C:/Users/apro/Documents/ok1.png
 ----XXX123--
 
+
+### file download with id
+
+GET {{baseUrl}}/file/download/123
+Content-Type:  application/json
+
 ### filter test
 
 post {{baseUrl}}/file/upload HTTP/1.1

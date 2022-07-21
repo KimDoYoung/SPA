@@ -3,6 +3,7 @@ import { logger } from '../config'
 import { ResMessage, User } from '../types';
 import { JwtService } from '../service';
 import { UserType, UserData} from '../data'
+import bcrypt from 'bcrypt'
 import assert from 'assert'
 
 export default class AuthController{
@@ -18,7 +19,9 @@ export default class AuthController{
         logger.debug('/user/login #################')
         let id = req.body.user_id
         let pw = req.body.user_pw
-        let found = UserData.find(user => user.user_id === id)
+
+        let found = UserData.find(user =>{ return (user.user_id === id && bcrypt.compareSync(pw, user.user_pw))})
+
         if(found){
             let user: User = new User(id, found.nm)
             let token: string = ''
