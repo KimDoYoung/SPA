@@ -24,15 +24,20 @@ export default class AuthController{
             let token: string = ''
             token = await JwtService.createJWT(user)
             logger.info('token: ' + token)
-            let decodedToken = JwtService.decodeJWT(token)
-            console.log('decodedtoken: ' , decodedToken)
-            res.status(200).json(ResMessage.success('OK',{token: token}))
+            // let decodedToken = JwtService.decodeJWT(token)
+            // console.log('decodedtoken: ' , decodedToken)
+            res
+            .cookie('auth_token', token, { httpOnly: true, secure: process.env.NODE_ENV === "production"})
+            .status(200).json(ResMessage.success('OK',{token: token}))
         }else{
             logger.debug(id + ' not found')
             res.status(403).json(ResMessage.fail(403, 'user auth fail'))
         }
     }
     public logout(req: Request, res: Response , next: NextFunction){
-        res.status(200).json(ResMessage.success('OK',{message: 'single file upload OK'}))
+        res
+        .clearCookie('auth_token')
+        .status(200)
+        .json(ResMessage.success('OK',{message: 'Successfully logged out'}))
     }
 }

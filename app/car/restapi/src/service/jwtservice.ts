@@ -14,7 +14,8 @@ export default class JwtService{
     }
     static extractTokenFromRequest = ( req: Request): string | undefined => {
         const TOKEN_PREFIX = 'Bearer '
-        const auth = req.headers.authorization
+        // const auth = req.headers.authorization
+        const auth = req.cookies.auth_token
         const token = auth?.includes(TOKEN_PREFIX)
                     ? auth.split(TOKEN_PREFIX)[1]
                     : auth;

@@ -3,8 +3,9 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import {CarRouter, UserRouter, FileRouter} from './router'
 import {logger, morganMiddleware} from './config'
-import { ResMessage } from './types';
-import { JwtService } from './service';
+import { ResMessage } from './types'
+import { JwtService } from './service'
+import  cookieParser from 'cookie-parser'
 
 export default class Server {
     public app: Application
@@ -22,17 +23,25 @@ export default class Server {
         return new Server(port)
     }
     private tokenChecker(req: Request, res: Response, next: NextFunction){
+        
         const userIdFromToken = JwtService.getUserIdFromRequest(req)
         req.userId = userIdFromToken
+        logger.debug('req.userId: ' + req.userId)
+        if(!req.userId){
+           // res.status(403).json(ResMessage.fail(403,'auth fail middle'))
+           if(req.url == '/user/login' || req.url == '/user/logout'){
+            return next()
+           }
+           throw new Error('auth fail')
+        }
         next()
     }
     private setupMiddleware(){
         this.app.use( cors() )
-        // this.app.use( express.json() )
-        // this.app.use( express.urlencoded({ extended: true }) )
         this.app.use( morganMiddleware )
         this.app.use( bodyParser.json())
         this.app.use( bodyParser.urlencoded({ extended: true }))
+        this.app.use( cookieParser());
         this.app.use( this.tokenChecker )
     }
     private setupRouter(){

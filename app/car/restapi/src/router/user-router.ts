@@ -10,6 +10,6 @@ UserRouter.get('/:id',  UserController.instance.get)
 UserRouter.patch('/:id',  UserController.instance.update)
 UserRouter.delete('/:id',  UserController.instance.delete)
 UserRouter.post('/login',  AuthController.instance.login)
-UserRouter.get('/logout',  AuthController.instance.logout)
+UserRouter.put('/logout',  AuthController.instance.logout)
 
 export default UserRouter

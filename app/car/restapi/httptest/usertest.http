@@ -35,6 +35,7 @@ Content-Type:  application/json
 ### update user
 PATCH {{baseUrl}}/user/kdy
 Content-Type:  application/json; charset=UTF-8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoia2R5IiwidXNlcl9ubSI6IktpbSBEbyBZb3VuZyIsImlhdCI6MTY1ODM3ODU1NX0.zREed8_AZmF1x69HEFfaOl5qnVfuj4ay-latDf66kew
 
 {
    "user_pw": "1234",
@@ -66,4 +67,9 @@ Content-Type:  application/json
    "user_id": "aaa",
    "user_pw": "a"
 }
+
+### user logout
+
+PUT {{baseUrl}}/user/logout
+Content-Type:  application/json
 

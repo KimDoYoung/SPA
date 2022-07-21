@@ -271,6 +271,12 @@ FILE_BASE_FOLDER=c:/Users/apro/Documents/work/files
 
 - access token과 refresh token은 뭘까? 보안때문에 한다고 하는데...
 - [middleware](https://charming-kyu.tistory.com/4)
+- request.headers.authorization = value;
+- login성공하고 token을 만들어서 1회보내면 client에서 어떻게 매번 token을 보내나?
+- 최종적으로 [cookie를 이용](https://dev.to/franciscomendes10866/using-cookies-with-jwt-in-node-js-8fn)하자. 
+  1. npm install express jsonwebtoken cookie-parser
+  2. npm install --save @types/cookie-parser
+  3. app.use(cookieParser());
 
 ## 순서
 
