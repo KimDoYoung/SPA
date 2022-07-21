@@ -53,4 +53,11 @@ export default class FileController{
         //res.download(file)
         res.status(200).json(ResMessage.success('OK',{}))
     }
+
+    public list(req: Request, res: Response , next: NextFunction){
+        res.status(200).json(ResMessage.success('OK',{message: 'list OK'}))
+    }
+    public delete(req: Request, res: Response , next: NextFunction){
+        res.status(200).json(ResMessage.success('OK',{message: 'delete OK'}))
+    }
 }
