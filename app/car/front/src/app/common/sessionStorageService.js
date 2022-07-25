@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = function() {
     var storage = window.sessionStorage;
     this.set = function(key, data){
         sessionStorage.setItem(key, JSON.stringify(data));

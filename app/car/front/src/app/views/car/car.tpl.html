@@ -1,8 +1,38 @@
 <header-link></header-link>
-<h2 class="text-2xl bg-blue-700">Car history</h2>
-<div class="submenu flex flex-col">
+<section class="m-2">
+<h2 class="text-2xl bg-blue-200 px-2">{{title}}</h2>
+<div class="submenu flex flex-wrap my-5">
     <ul>
-        <li><a href="#/car">list</a></li>
-        <li><a href="#/car/add">new event</a></li>
+        <li><a href=""  ng-click="toggle()" class="m-3 px-3 py-2 bg-blue-500 text-white rounded-md">{{buttonTitle}}</a></li>
     </ul>
 </div>
+<div class="list" ng-show="isList">
+    <span>total Count : {{totalCount}}</span>
+    <table>
+        <tr ng-repeat="item in list">
+            <td>{{item.id}}</td>
+            <td>{{item.ymd | displayYmd:'-'}}({{item.ymd | ymdYoil}})</td>
+            <td>{{item.event_nm}}</td>
+        </tr>
+    </table>
+</div>
+<div class="edit" ng-show="!isList">
+    <form class="flex flex-col">
+        <label for="ymd">이벤트 발생일</label>
+        <input type="text" name="ymd" id="ymd" ng-model="ymd" class="border w-1/5">
+        <label for="event_id" class="mt-2">이벤트 종류</label>
+        <div class="flex flex-row">
+            <label for="event_id_1">주유</label><input type="radio" name="event_id" id="event_id_1" value="1" ng-model="event_id" ng-change="eventIdChange()">
+            <label for="event_id_2">정비</label><input type="radio" name="event_id" id="event_id_2" value="2" ng-model="event_id" ng-change="eventIdChange()">
+            <label for="event_id_3">기타</label><input type="radio" name="event_id" id="event_id_3" value="3" ng-model="event_id" ng-change="eventIdChange()">
+            <div ng-show="event_id==3">
+                <input type="text" ng-model="event_nm" class="border">
+            </div>
+        </div>  
+        <div>
+            <button ng-click="addClick()" class="bg-blue-500 text-white m-3 px-5 py-1 rounded-md">추가</button>
+        </div>
+    </form>
+</div>
+</section>
+<footer-info></footer-info>

@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = function() {
     let storage = window.localStorage;
     this.set = function(key, data){
         storage.setItem(key, JSON.stringify(data));

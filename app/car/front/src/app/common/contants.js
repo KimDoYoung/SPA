@@ -27,11 +27,17 @@
 // module.exports = dateUtil(dateFilter);
 
 
-module.exports = (dateFilter) => {
-    var today = function(dateFilter){
-        return dateFilter( new Date(), 'yyyy-MM-dd');
-    }
-    return {
-        today : today(dateFilter)
-    };
-}  
+// module.exports = function(dateFilter) {
+//     var today = dateFilter( new Date(), 'yyyy-MM-dd');
+//     return {
+//         today : today,
+//         companyName : 'Kalpa Tech'
+//     };
+// }  
+module.exports = {
+    companyName : 'Kalpa Tech',
+    program : {
+        Version: '0.1'
+    },
+    SERVER : 'http://localhost:5000'
+}

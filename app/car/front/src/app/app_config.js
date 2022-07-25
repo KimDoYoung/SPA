@@ -4,7 +4,8 @@ module.exports = ($stateProvider, $urlRouterProvider, $locationProvider)=>{
     $stateProvider
     .state('car', {
         url : '/car',
-        templateUrl : 'app/views/car/car.tpl.html'
+        templateUrl : 'app/views/car/car.tpl.html',
+        controller : 'carController'
     })
     .state('user', {
         url : '/user',

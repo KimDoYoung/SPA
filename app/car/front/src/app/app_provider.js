@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = function(){
     const baseUrl = 'http://jskn.iptime.org:8282/api';
     this.$get = function($http, $log){
         let services = {};
