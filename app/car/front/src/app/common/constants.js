@@ -35,9 +35,10 @@
 //     };
 // }  
 module.exports = {
-    companyName : 'Kalpa Tech',
-    program : {
+    CompanyName : 'Kalpa Tech',
+    Program : {
         Version: '0.1'
     },
-    SERVER : 'http://localhost:5000'
+    Port : 5000,
+    Server : 'http://localhost:5000'
 }

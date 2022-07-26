@@ -341,3 +341,9 @@ jwt.verify(token, config.JWT_SECRET_KEY!)
 2. front(angularJS+tailwind) 는 nginx에서 돈다.
 3. restapi 를 서비스로 등록
 4. restapi 는 수정되었을때 git 으로 pull한 후에 다시 기동
+
+  ### restapi (backend)
+  1. carbuild.sh 이 필요
+    * tsc 로 빌드해서 dist를 만들고 
+    * .product.env를 copy하고
+    * NODE_ENV 변수를 설정한다.

@@ -7,12 +7,13 @@
     </ul>
 </div>
 <div class="list" ng-show="isList">
-    <span>total Count : {{totalCount}}</span>
+    <span>total Count : {{totalCount}}</span> 
     <table>
         <tr ng-repeat="item in list">
             <td>{{item.id}}</td>
             <td>{{item.ymd | displayYmd:'-'}}({{item.ymd | ymdYoil}})</td>
             <td>{{item.event_nm}}</td>
+            <td><button ng-click="delete(item.id)">삭제</button></td>
         </tr>
     </table>
 </div>
@@ -35,4 +36,6 @@
     </form>
 </div>
 </section>
-<footer-info></footer-info>
+<footer-info>
+    f
+</footer-info>

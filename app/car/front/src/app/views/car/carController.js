@@ -1,12 +1,14 @@
-module.exports = function($http, $scope, dateService, CONFIG) {
+module.exports = function($http, $scope, dateService, Config) {
     $scope.title = 'Car Events'
     $scope.totalCount =0
-    $scope.isList = false;
     $scope.buttonTitle = 'new event'
-    // $scope.ymd= dateFilter( new Date(), 'yyyy-MM-dd')
     $scope.ymd= dateService.today
-    $scope.event_id = 1
-    $scope.evnet_nm = '주유'    
+    $scope.init = function(){
+        $scope.event_id = 1
+        $scope.evnet_nm = '주유'        
+        $scope.getList()
+        $scope.isList = true;
+    }
     $scope.toggle = function(){
         $scope.isList = !$scope.isList
         if($scope.isList){
@@ -19,37 +21,57 @@ module.exports = function($http, $scope, dateService, CONFIG) {
         console.log( $scope.event_id )
         let event_id = $scope.event_id;
         let event_nm_array=['','주유','정비','']
-        if(event_id == 3){
-            $scope.event_nm = event_nm_array[event_id]
-        }
+        $scope.event_nm = event_nm_array[event_id]
     }
     $scope.addClick = function(){
         console.log('add click')
-        let url = CONFIG.SERVER+'/car'
+        let url = Config.Server+'/car'
         let data = {
             ymd : $scope.ymd.replace(/-/g, ""),
             event_cd: $scope.event_id,
-            event_nm: 'abc'
+            event_nm: $scope.event_nm,
         }
         console.log(url, data)
         $http.post(url, JSON.stringify(data))
         .then(function(response){
-                console.log(response)
+            console.log(response)
+            if(response.data.resultCode != 200){
+                alert(response.data.resultMessage)
+            }else{
+                $scope.init()
+            }
         }, function(error){
-            console.error(error)
+            alert(error.data.resultMessage) 
         })
     }
-    $scope.list = $http.get(CONFIG.SERVER + '/car/list')
-        .then(
-            (response)=>{
-                console.log(response)
-                console.log(response.data.data.list)
-                $scope.list = response.data.data.list
-                $scope.totalCount = response.data.data.totalCount
-            },
-            (error)=>{
-                $scope.list = []
-                console.log(error)
-            }
-        )    
+    $scope.getList = function(){
+        $scope.list = $http.get(Config.Server + '/car/list')
+            .then(
+                (response)=>{
+                    console.log(response)
+                    console.log(response.data.data.list)
+                    $scope.list = response.data.data.list
+                    $scope.totalCount = response.data.data.totalCount
+                },
+                (error)=>{
+                    $scope.list = []
+                    console.log(error)
+                }
+            )    
+    }
+    $scope.delete = function(id){
+        console.log('delete id : ' + id)
+        if(confirm('are you sure delete?') == false) return;
+        $http.delete(Config.Server + '/car/' + id)
+            .then(
+                (response) => {
+                    console.log(response)
+                    $scope.init()
+                },
+                (error) =>{
+                    console.error(error)
+                }
+            )
+    }
+    $scope.init()
 }

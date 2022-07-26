@@ -21,7 +21,7 @@ require('./common/filters')
 // })
 //constant
 // app.constant('CONST', {companyName : 'kalap tech'});
-app.constant('CONFIG', require('./common/contants'));
+app.constant('Config', require('./common/constants'));
 
 //provider
 app.provider('dataProvider', require('./app_provider'));
@@ -32,6 +32,7 @@ app.service('localStorage', require('./common/localStorageService'));
 app.service('dateService', require('./common/dateService'))
 
 // //directives
+app.directive('currentTime', require('./components/common/currentTime'))
 app.directive('headerLink', require('./components/nav/headerLinkDirective'))
 app.directive('footerInfo', require('./components/layout/footerDirective'))
 app.directive('displayYmd', require('./components/common/displayYmdDirective'))
