@@ -9,7 +9,8 @@ module.exports = ($stateProvider, $urlRouterProvider, $locationProvider)=>{
     })
     .state('user', {
         url : '/user',
-        templateUrl : 'app/views/user/user.tpl.html'
+        templateUrl : 'app/views/user/user.tpl.html',
+        controller : 'userController'
     })
     .state('login', {
         url : '/login',

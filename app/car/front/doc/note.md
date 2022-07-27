@@ -71,6 +71,45 @@
 
 ```javascript
 module.exports = function () {
+  const controller = (scope, element, attrs) => {};
+  const link = (scope, element, attrs, controller, transcludeFn) => {};
+  return {
+    replace: true,
+    scope: {},
+    restrict: 'E',
+    transclude: true,
+    templateUrl: 'app/components/common/search.tpl.html',
+    controller: controller,
+    link: link,
+  };
+};
+
+module.exports = function () {
+  const link = (scope, element, attrs, controller, transcludeFn) => {};
+  const controller = function ($scope) {
+    this.initButtonClick = () => {
+      console.log('init button clicked');
+    };
+  };
+  const templateUrl = 'app/components/common/search.tpl.html';
+
+  return {
+    replace: true,
+    scope: {
+      showInitButton: '=',
+    },
+    restrict: 'E',
+    transclude: false,
+    templateUrl: templateUrl,
+    controllerAs: 'search',
+    link: link,
+    controller: controller,
+  };
+};
+```
+
+```javascript
+module.exports = function () {
   return {
     restrict: 'E',
     scope: {},
@@ -152,11 +191,16 @@ module.exports = function ($interval, dateFilter) {
 
 ## controller template
 
+- 왜 ()=>는안되는 것일까? controller만 안된다.
+- scope.data, scope.event 이렇게 감싸는 것 번거롭다. 차라리 상단에 기술하는게 좋을 듯
+
 ```javascript
-$scope.data = {};
-$scope.event = {};
-$scope.init = function () {};
-$scope.init();
+module.exports = function ($http, $scope, dateService, Config) {
+  $scope.data = {};
+  $scope.event = {};
+  $scope.init = function () {};
+  $scope.init();
+};
 ```
 
 ### controller에 $watch를 사용한다.

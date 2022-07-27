@@ -6,6 +6,6 @@ module.exports = function() {
         scope : {
             // title :'@'
         },
-        templateUrl :'app/components/layout/footer.tpl.html'
+        templateUrl :'app/components/layout/footerInfo.tpl.html'
     }
 }

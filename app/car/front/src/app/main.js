@@ -34,7 +34,10 @@ app.service('dateService', require('./common/dateService'))
 // //directives
 app.directive('currentTime', require('./components/common/currentTime'))
 app.directive('headerLink', require('./components/nav/headerLinkDirective'))
-app.directive('footerInfo', require('./components/layout/footerDirective'))
+app.directive('footerInfo', require('./components/layout/footerInfoDirective'))
 app.directive('displayYmd', require('./components/common/displayYmdDirective'))
+app.directive('search', require('./components/common/searchDirective'))
+
 //controllers
+app.controller('userController', require('./views/user/userController'));
 app.controller('carController', require('./views/car/carController'));

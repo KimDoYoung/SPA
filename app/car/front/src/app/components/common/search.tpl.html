@@ -1,0 +1,5 @@
+<div class="inline-flex justify-between space-x-2 grow">
+    <input  ng-model="keyword" type="text" placeholder="{{placeholder}}" class="border  px-3 py-2">
+    <button ng-click="search.searchButtonClick({keyword:keyword})" class="bg-blue-300 px-3 py-2 rounded-md hover:bg-blue-500">검색</button>
+    <button ng-click="search.initButtonClick()" class="bg-gray-300 px-3 py-2 rounded-md hover:bg-gray-500" ng-show="isShowInitButton">초기화</button>
+</div>
