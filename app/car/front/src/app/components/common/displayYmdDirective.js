@@ -1,23 +1,23 @@
-module.exports = function() {
+module.exports = function () {
     return {
-        restrict : 'E',
-        scope : {
-          //  ymd : '='
+        restrict: 'E',
+        scope: {
+            //  ymd : '='
         },
-        compile : (tElement, tAttribute)=>{
+        compile: (tElement, tAttribute) => {
             console.log(tAttribute.ymd + ' in Compiler');
             return {
-                pre : function(scope, iElement, iAttributes, controller){
+                pre: function (scope, iElement, iAttributes, controller) {
                     console.log(iAttributes.ymd + ' In Pre');
                 },
-                post : function(scope, iElement, iAttributes, controller){
+                post: function (scope, iElement, iAttributes, controller) {
                     debugger;
                     console.log(iAttributes.ymd + ' In Post');
                 }
-            }
+            };
         },
-        controller : (scope, element, attrs) => {
+        controller: (scope, element, attrs) => {
             console.log(attrs.ymd + ' In Controller');
         }
-    }   
-}
+    };
+};

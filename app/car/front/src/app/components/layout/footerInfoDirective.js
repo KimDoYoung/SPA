@@ -1,11 +1,11 @@
-module.exports = function() {
+module.exports = function () {
     return {
-        restrict : 'E',
-        replace : true,
+        restrict: 'E',
+        replace: true,
         transclude: false,
-        scope : {
+        scope: {
             // title :'@'
         },
-        templateUrl :'app/components/layout/footerInfo.tpl.html'
-    }
-}
+        templateUrl: 'app/components/layout/footerInfo.tpl.html'
+    };
+};

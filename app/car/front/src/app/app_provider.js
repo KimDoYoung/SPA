@@ -1,13 +1,13 @@
-module.exports = function(){
+module.exports = function () {
     const baseUrl = 'http://jskn.iptime.org:8282/api';
-    this.$get = function($http, $log){
+    this.$get = function ($http, $log) {
         let services = {};
-        services.getEmployees = function(){
+        services.getEmployees = function () {
             return $http({
-                url : baseUrl + '/users',
-                method : 'GET'
+                url: baseUrl + '/users',
+                method: 'GET'
             });
-        }
+        };
         return services;
-    }
-}
+    };
+};

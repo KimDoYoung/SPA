@@ -1,24 +1,24 @@
 <header-link></header-link>
 <section class="m-5">
-<h2 class="text-2xl text-blue-700">user list</h2>
-<div class="list">
-    <div class="bg-gray-100">
-        <search search-callback="search(keyword)" init-callback="initSearch()" is-show-init-button="true" placeholder="검색어를 입력해주십시오"/>
-    </div>    
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>nm</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in list">
-                <td>{{user.user_id}}</td>
-                <td>{{user.nm}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <h2 class="text-2xl text-blue-700">user list</h2>
+    <div class="list">
+        <div class="bg-gray-100">
+            <search search-callback="search(keyword)" init-callback="initSearch()" is-show-init-button="true" placeholder="검색어를 입력해주십시오" />
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in list">
+                    <td>{{user.user_id}}</td>
+                    <td>{{user.nm}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 <footer-info></footer-info>
