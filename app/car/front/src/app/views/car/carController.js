@@ -11,11 +11,7 @@ module.exports = function ($http, $scope, dateService, Config) {
     };
     $scope.toggle = function () {
         $scope.isList = !$scope.isList;
-        if ($scope.isList) {
-            $scope.buttonTitle = 'new event';
-        } else {
-            $scope.buttonTitle = 'show list';
-        }
+        $scope.buttonTitle = $scope.isList ? 'new event' : 'show list';
     };
     $scope.eventIdChange = function () {
         console.log($scope.event_id);
