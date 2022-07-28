@@ -6,7 +6,7 @@ var Circle = /** @class */ (function () {
         return this.radius * this.radius * Math.PI;
     };
     return Circle;
-}());
+})();
 var Rectangle = /** @class */ (function () {
     //width: number;
     //height: number;
@@ -20,7 +20,7 @@ var Rectangle = /** @class */ (function () {
         return this.width * this.height;
     };
     return Rectangle;
-}());
+})();
 var shapes = [new Circle(5), new Rectangle(3, 4)];
 shapes.forEach(function (shape) {
     console.log(shape.getArea());

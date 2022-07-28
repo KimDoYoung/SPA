@@ -1,7 +1,7 @@
 module.exports = () => {
     return {
         restrict : 'E',
-        transclude: true,
+        transclude: false,
         replace : true,
         scope : {
             // title :'@'

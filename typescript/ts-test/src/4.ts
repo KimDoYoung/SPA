@@ -3,17 +3,17 @@ interface Item<T> {
 }
 const items: Item<string> = {
     list: ['a', 'b', 'c']
-}
+};
 
 class Queue<T> {
     list: T[] = [];
-    public length(){
+    public length() {
         return this.list.length;
     }
-    enqueue(item: T){
+    enqueue(item: T) {
         this.list.push(item);
     }
-    dequeue(){
+    dequeue() {
         return this.list.shift();
     }
 }

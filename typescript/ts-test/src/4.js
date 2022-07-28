@@ -15,7 +15,7 @@ var Queue = /** @class */ (function () {
         return this.list.shift();
     };
     return Queue;
-}());
+})();
 var queue = new Queue();
 queue.enqueue(0);
 queue.enqueue(1);

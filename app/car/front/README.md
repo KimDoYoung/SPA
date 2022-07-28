@@ -54,3 +54,8 @@ app.filter('displayYmd', function () {
 ## 왜?
 
 - 뭔가가 정리되어 있지 않으니 매번 볼때마다 새롭게 느껴져버린다
+
+## vscode의 설정 및 prettier의 사용
+
+- 해당폴더의 .vscode는 무엇인가? 이곳부터 먹는가?
+- [prettier의 사용](https://adjh54.tistory.com/20)

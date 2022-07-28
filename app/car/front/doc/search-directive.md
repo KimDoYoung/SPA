@@ -114,3 +114,5 @@ keyword는 search template의 input 값이다. 이는 ng-model로 지정되어�
 search.searchButtonClick과 search.initButtonClick 이 지정되어 있는데, 이 두개의 함수는 directive의
 controller에서 지정해주고 있다.
 그리고 각각의 함수에서 scope에서 지정한 함수 즉 parent 여기서는 user controller가 가지고 있는 함수 호출한다.
+
+5. controller 함수에서 event함수를 추가하고 그것을 호출하게한다. 만들어진 함수에서 html에서 지정한 함수를 호출해준다. (** 이점이 keypoint 일듯 **)

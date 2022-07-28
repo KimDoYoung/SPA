@@ -26,5 +26,6 @@ module.exports = function($http, $scope, Config){
     $scope.search = (keyword) => {
         console.log('parent recevied keyword:' +keyword)
     }
+
     $scope.init();
   }
