@@ -37,6 +37,8 @@ app.directive('headerLink', require('./components/nav/headerLinkDirective'));
 app.directive('footerInfo', require('./components/layout/footerInfoDirective'));
 app.directive('displayYmd', require('./components/common/displayYmdDirective'));
 app.directive('search', require('./components/common/searchDirective'));
+app.service('pageJumperService', require('./components/common/pageJumperService'));
+app.directive('pageJumper', require('./components/common/pageJumperDirective'));
 
 //controllers
 app.controller('userController', require('./views/user/userController'));

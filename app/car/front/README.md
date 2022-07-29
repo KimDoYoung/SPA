@@ -65,3 +65,7 @@ app.filter('displayYmd', function () {
 
 -   npx prettier --write ./src
 -   npx prettier --check ./src
+
+## pager directive는
+
+-   [구글pager](https://jasonwatmore.com/post/2016/01/31/angularjs-pagination-example-with-logic-like-google)

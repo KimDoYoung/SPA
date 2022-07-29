@@ -48,7 +48,8 @@ module.exports = function ($http, $scope, dateService, Config) {
                 console.log(response);
                 console.log(response.data.data.list);
                 $scope.list = response.data.data.list;
-                $scope.totalCount = response.data.data.totalCount;
+                // $scope.totalCount = response.data.data.totalCount;
+                $scope.totalCount = 11;
             },
             (error) => {
                 $scope.list = [];

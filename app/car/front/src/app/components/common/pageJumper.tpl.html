@@ -1,0 +1,15 @@
+<div>
+    <ul class="flex inline-flex px-2">
+        <li class="px-2">pageSize : {{jumper.pageSize}}</li>
+        <li class="px-2">totalItemCount : {{jumper.totalItemCount}}</li>
+        <li class="px-2">pagerCount : {{jumper.pagerCount}}</li>
+        <li class="px-2">totalPageCount : {{jumper.totalPageCount}}</li>
+        <li class="px-2">currentPageNumber : {{jumper.currentPageNumber}}</li>
+    </ul>
+    <br />
+    <ul ng-show="jumper.totalPageCount > 1" class="flex inline-flex">
+        <li class="w-10 h-10 bg-blue-200 mx-1" ng-hide="jumper.currentPageNumber === 1"><<</li>
+        <li ng-repeat="page in jumper.pages" class="w-10 h-10 bg-blue-200 mx-1" ng-class="{'bg-red-100':jumper.currentPageNumber === page}">{{page}}</li>
+        <li class="w-10 h-10 bg-blue-200 mx-1" ng-hide="jumper.currentPageNumber === jumper.totalPageCount">>></li>
+    </ul>
+</div>

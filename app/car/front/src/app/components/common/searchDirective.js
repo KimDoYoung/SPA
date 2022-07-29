@@ -4,9 +4,9 @@ module.exports = function () {
         // console.log( $(tElement).find('input'))
         // console.log( '-------------')
     };
-    const link = (scope, element, attrs, controller, transcludeFn) => {
-        // console.log('--------element.text:' + $(element).find('input').length)
-    };
+    // const link = (scope, element, attrs, controller, transcludeFn) => {
+    //     // console.log('--------element.text:' + $(element).find('input').length)
+    // };
     const controller = function ($scope) {
         this.initButtonClick = () => {
             console.log('init button clicked');
@@ -20,7 +20,9 @@ module.exports = function () {
     };
     const templateUrl = 'app/components/common/search.tpl.html';
     const controllerName = 'search';
+
     return {
+        restrict: 'E',
         replace: true,
         scope: {
             placeholder: '@',
@@ -28,12 +30,11 @@ module.exports = function () {
             initCallback: '&',
             searchCallback: '&'
         },
-        restrict: 'E',
         transclude: false,
         templateUrl: templateUrl,
         controllerAs: controllerName,
         compile: compile,
-        link: link,
+        // link: link,
         controller: controller
     };
 };
