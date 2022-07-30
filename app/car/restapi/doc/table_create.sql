@@ -17,9 +17,10 @@ create table if not exists car (
 
 drop table if exists users;
 create table if not exists users (
-    user_id varchar(20) not null comment 'user id',
+    user_id varchar(100) not null comment 'user id email',
     user_pw varchar(100) not null comment 'user pw',
     nm varchar(10) not null comment 'user name',
+    auth varchar(10) null comment 'user auth',
     primary key(user_id)
 )ENGINE=INNODB CHARSET=utf8 comment 'account user';
 

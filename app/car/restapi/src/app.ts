@@ -5,16 +5,16 @@ import cors from 'cors';
 import carRouter from './router/car-router';
 
 const app: Application = express();
-app.use( cors() );
-app.use( express.json() );
+app.use(cors());
+app.use(express.json());
 app.use(
     express.urlencoded({
-        extended : true
+        extended: true
     })
 );
 
-app.get('/', (req, res)=>{
-    res.json( { message : 'ok' } );
+app.get('/', (req, res) => {
+    res.json({ message: 'ok' });
 });
 
 //router

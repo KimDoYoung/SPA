@@ -1,1 +1,1 @@
-export { default as MariaDB } from './mariadb'
+export { default as MariaDB } from './mariadb';

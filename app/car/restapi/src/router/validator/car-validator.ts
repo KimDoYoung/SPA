@@ -2,9 +2,9 @@ import { check, body } from 'express-validator';
 const CarInsertValidation = [
     check('ymd', '발생일은 필수입니다').not().isEmpty(),
     check('event_cd', 'event코드는  필수입니다').not().isEmpty(),
-    check('event_nm', 'event명은  필수입니다').not().isEmpty(),
-]
-export default CarInsertValidation
+    check('event_nm', 'event명은  필수입니다').not().isEmpty()
+];
+export default CarInsertValidation;
 
 //  create table if not exists car (
 //  id int primary key auto_increment comment 'id',

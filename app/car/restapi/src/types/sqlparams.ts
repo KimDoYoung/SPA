@@ -1,3 +1,3 @@
 export default interface SqlParams {
-    [key: string]: any
+    [key: string]: any;
 }

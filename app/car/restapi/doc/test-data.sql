@@ -47,7 +47,9 @@ VALUES('user2', '1234', '고길동');
 INSERT INTO jskndb.users
 (user_id, user_pw, nm)
 VALUES('user3', '1234', '마이콜');
-
+INSERT INTO jskndb.users
+(user_id, user_pw, nm, auth)
+VALUES('kdy987@gmail.com', '1234', '김도영', 'admin');
 
 select * from users;
 select * from car;
